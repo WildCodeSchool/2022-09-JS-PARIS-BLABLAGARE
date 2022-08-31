@@ -15,7 +15,8 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "import"],
+  "plugins": ["react", "import", "@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
   "rules": {
     "no-console": "off",
     "no-restricted-syntax": [
@@ -33,10 +34,17 @@
       {
         "assert": "either"
       }
+    ],
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts"] }],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      { "js": "never", "jsx": "never", "ts": "never", "tsx": "never" }
     ]
   },
   "settings": {
     "import/resolver": {
+      "typescript": {}, 
       "eslint-import-resolver-custom-alias": {
         "alias": {
           "@assets": "./src/assets",
@@ -44,7 +52,7 @@
           "@pages": "./src/pages",
           "@services": "./src/services"
         },
-        "extensions": [".js", ".jsx"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
   }

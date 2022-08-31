@@ -1,5 +1,6 @@
 import Counter from "@components/Counter";
 import logo from "@assets/logo.svg";
+import React from "react";
 
 export default function Home() {
   return (
