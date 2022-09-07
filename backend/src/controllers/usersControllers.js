@@ -5,11 +5,11 @@ const getUsers = async (req, res) => {
   res.status(201).json(users);
 };
 
-const getUser = async (req, res) => {
+const getUser = (req, res) => {
   // eslint-disable-next-line prefer-destructuring
-  const pseudo = req.params.pseudo;
+  const alias = req.params.alias;
   sqldb
-    .query("select * from users where pseudo = ?", [pseudo])
+    .query("select * from users where alias = ?", [alias])
     .then(([users]) => {
       if (users[0] != null) {
         res.json(users[0]);
@@ -18,16 +18,16 @@ const getUser = async (req, res) => {
       }
     })
     .catch((err) => {
-      res.status(500).send(`error retyrieving data from database ${err}`);
+      res.status(500).send(`error retrieving data from database ${err}`);
     });
 };
 
 const postUsers = (req, res) => {
-  const { firstname, lastname, Email, Pseudo, hashedPassword } = req.body;
+  const { firstname, lastname, Email, alias, hashedPassword } = req.body;
   sqldb
     .query(
-      "INSERT INTO users ( firstname, lastname, Email, Pseudo, hashedPassword ) VALUES (?, ?, ?, ?, ?)",
-      [firstname, lastname, Email, Pseudo, hashedPassword]
+      "INSERT INTO users ( firstname, lastname, Email, alias, hashedPassword ) VALUES (?, ?, ?, ?, ?)",
+      [firstname, lastname, Email, alias, hashedPassword]
     )
     .then(([result]) => {
       res.location(`/users/${result.insertId}`).sendStatus(201);
@@ -52,12 +52,12 @@ const deleteUsers = (req, res) => {
 
 const updateUsers = (req, res) => {
   const { id } = req.params;
-  const { firstname, lastname, Email, Pseudo, hashedPassword } = req.body;
+  const { firstname, lastname, Email, alias, hashedPassword } = req.body;
   sqldb
     .query(
-      "UPDATE users SET firstname =?, lastname =?, Email =?, Pseudo =?, hashedPassword =? where id =?",
+      "UPDATE users SET firstname =?, lastname =?, Email =?, alias =?, hashedPassword =? where id =?",
       // eslint-disable-next-line no-undef
-      [firstname, lastname, Email, Pseudo, hashedPassword, id]
+      [firstname, lastname, Email, alias, hashedPassword, id]
     )
     .then(([result]) => {
       if (result.affectedRows === 0) {

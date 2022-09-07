@@ -1,19 +1,84 @@
 const { sqldb } = require("../../db");
 
-const getTrips = async (req, res) => {
-  const trips = await sqldb.query("select * from trips");
-  res.status(201).json(trips);
+// const getTrips = async (req, res) => {
+//   const trips = await sqldb.query(
+//     "select alias, search, origin, to1, to2, to3, day, hour, comments, Email from trips INNER JOIN users ON users.id = trips.users_id ORDER BY hour"
+//   );
+//   res.status(201).json(trips);
+// };
+
+const getTrips = (req, res) => {
+  let tripsFilter =
+    "select alias, search, origin, to1, to2, to3, day, hour, comments, Email from trips INNER JOIN users ON users.id = trips.users_id ORDER BY hour";
+  const tripsValues = [];
+
+  if (req.query.origin != null) {
+    tripsFilter += "where origin = ?";
+    tripsValues.push(req.query.origin);
+
+    if (req.query.day != null) {
+      tripsFilter += "and day = ?";
+      tripsValues.push(req.query.day);
+
+      if (req.query.hour != null) {
+        tripsFilter += "and hour >= ?";
+        tripsValues.push(req.query.hour);
+      }
+    }
+  }
+  sqldb
+    .query(tripsFilter, tripsValues)
+
+    .then(([trips]) => {
+      res.json(trips);
+    })
+    .catch((err) => {
+      res.status(500).send(`error retrieving data from database ${err}`);
+    });
 };
+
+const getTripsByUser = (req, res) => {
+  let { id } = req.params;
+  id = parseInt(id, 10);
+  sqldb
+    .query(
+      "select alias, search, origin, to1, to2, to3, day, hour from trips INNER JOIN users ON users.id = trips.users_id WHERE users_id = ?",
+      [id]
+    )
+    .then(([trips]) => {
+      res.json(trips);
+    })
+    .catch((err) => {
+      res.status(500).send(`error retrieving data from database ${err}`);
+    });
+};
+
+// const getTripsbyOrigin = (req, res) => {
+//   const { origin } = req.params.origin;
+//   const { day } = req.params.day;
+//   const { hour } = req.params.hour;
+//   sqldb
+//     .query(
+//       "select alias, search, origin, to1, to2, to3, day, hour, comments, Email from trips INNER JOIN users ON users.id = trips.users_id WHERE origin= ? AND day = ? and hour >= ? ORDER BY hour",
+//       [origin, day, hour]
+//     )
+//     .then(([trips]) => {
+//       res.json(trips);
+//     })
+//     .catch((err) => {
+//       res.status(500).send(`error retrieving data from database ${err}`);
+//     });
+// };
 
 const postTrips = (req, res) => {
   // eslint-disable-next-line camelcase
-  const { search, from, to1, to2, to3, day, hour, commentaire, users_id } =
+  const { search, origin, to1, to2, to3, day, hour, comments, users_id } =
     req.body;
   sqldb
     .query(
-      "INSERT INTO trips ( search, from, to1, to2, to3, day, hour, commentaire, users_id ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO trips ( search, origin, to1, to2, to3, day, hour, comments, users_id ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
       // eslint-disable-next-line camelcase
-      [search, from, to1, to2, to3, day, hour, commentaire, users_id]
+      [search, origin, to1, to2, to3, day, hour, comments, users_id]
     )
     .then(([result]) => {
       res.location(`/trips/${result.insertId}`).sendStatus(201);
@@ -36,4 +101,10 @@ const deleteTrips = (req, res) => {
     });
 };
 
-module.exports = { getTrips, postTrips, deleteTrips };
+module.exports = {
+  getTrips,
+  postTrips,
+  deleteTrips,
+  getTripsByUser,
+  //   getTripsbyOrigin,
+};
