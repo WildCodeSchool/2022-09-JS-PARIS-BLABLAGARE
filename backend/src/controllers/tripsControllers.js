@@ -1,27 +1,20 @@
 const { sqldb } = require("../../db");
 
-// const getTrips = async (req, res) => {
-//   const trips = await sqldb.query(
-//     "select alias, search, origin, to1, to2, to3, day, hour, comments, Email from trips INNER JOIN users ON users.id = trips.users_id ORDER BY hour"
-//   );
-//   res.status(201).json(trips);
-// };
-
 const getTrips = (req, res) => {
   let tripsFilter =
-    "select alias, search, origin, to1, to2, to3, day, hour, comments, Email from trips INNER JOIN users ON users.id = trips.users_id ORDER BY hour";
+    "select alias, search, origin, to1, to2, to3, DATE_FORMAT(day, '%d %m %Y') AS day, hour, comments, Email from trips INNER JOIN users ON users.id = trips.users_id";
   const tripsValues = [];
 
   if (req.query.origin != null) {
-    tripsFilter += "where origin = ?";
+    tripsFilter += " where origin = ?";
     tripsValues.push(req.query.origin);
 
     if (req.query.day != null) {
-      tripsFilter += "and day = ?";
+      tripsFilter += "and day = ? ";
       tripsValues.push(req.query.day);
 
       if (req.query.hour != null) {
-        tripsFilter += "and hour >= ?";
+        tripsFilter += "and hour >= ? ORDER BY hour";
         tripsValues.push(req.query.hour);
       }
     }
@@ -52,23 +45,6 @@ const getTripsByUser = (req, res) => {
       res.status(500).send(`error retrieving data from database ${err}`);
     });
 };
-
-// const getTripsbyOrigin = (req, res) => {
-//   const { origin } = req.params.origin;
-//   const { day } = req.params.day;
-//   const { hour } = req.params.hour;
-//   sqldb
-//     .query(
-//       "select alias, search, origin, to1, to2, to3, day, hour, comments, Email from trips INNER JOIN users ON users.id = trips.users_id WHERE origin= ? AND day = ? and hour >= ? ORDER BY hour",
-//       [origin, day, hour]
-//     )
-//     .then(([trips]) => {
-//       res.json(trips);
-//     })
-//     .catch((err) => {
-//       res.status(500).send(`error retrieving data from database ${err}`);
-//     });
-// };
 
 const postTrips = (req, res) => {
   // eslint-disable-next-line camelcase
@@ -106,5 +82,4 @@ module.exports = {
   postTrips,
   deleteTrips,
   getTripsByUser,
-  //   getTripsbyOrigin,
 };
