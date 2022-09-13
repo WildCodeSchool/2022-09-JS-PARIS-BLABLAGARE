@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 25vw;
+}
+h3 {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .logo {
+    width: 15vw;
+  }
+  h3 {
+    display: flex;
+    position: absolute;
+    bottom: 10%;
+    left: 40%;
+    text-align: center;
+  }
+}
