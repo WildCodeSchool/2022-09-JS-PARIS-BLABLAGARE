@@ -2,19 +2,19 @@ const { sqldb } = require("../../db");
 
 const getTrips = (req, res) => {
   let tripsFilter =
-    "select alias, search, origin, to1, to2, to3, DATE_FORMAT(day, '%d %m %Y') AS day, hour, comments, Email from trips INNER JOIN users ON users.id = trips.users_id";
+    "select u_alias, t_id, t_search, t_origin, t_dest1, t_dest2, t_dest3, DATE_FORMAT(t_date, '%d %m %Y') AS day, t_hour, t_comments, u_email from trips INNER JOIN users ON users.u_id = trips.t_users_id";
   const tripsValues = [];
 
   if (req.query.origin != null) {
-    tripsFilter += " where origin = ?";
+    tripsFilter += " where t_origin = ?";
     tripsValues.push(req.query.origin);
 
     if (req.query.day != null) {
-      tripsFilter += "and day = ? ";
+      tripsFilter += "and t_date = ? ";
       tripsValues.push(req.query.day);
 
       if (req.query.hour != null) {
-        tripsFilter += "and hour >= ? ORDER BY hour";
+        tripsFilter += "and t_hour >= ? ORDER BY t_hour";
         tripsValues.push(req.query.hour);
       }
     }
@@ -35,7 +35,7 @@ const getTripsByUser = (req, res) => {
   id = parseInt(id, 10);
   sqldb
     .query(
-      "select alias, search, origin, to1, to2, to3, day, hour from trips INNER JOIN users ON users.id = trips.users_id WHERE users_id = ?",
+      "select u_alias, t_search, t_origin, t_dest1, t_dest2, t_dest3, t_date, t_hour from trips INNER JOIN users ON users.u_id = trips.t_users_id WHERE t_users_id = ?",
       [id]
     )
     .then(([trips]) => {
@@ -48,23 +48,23 @@ const getTripsByUser = (req, res) => {
 
 const postTrips = (req, res) => {
   // eslint-disable-next-line camelcase
-  const { search, origin, to1, to2, to3, day, hour, comments, users_id } =
+  const { search, origin, dest1, dest2, dest3, day, hour, comments, users_id } =
     req.body;
   sqldb
     .query(
-      "INSERT INTO trips ( search, origin, to1, to2, to3, day, hour, comments, users_id ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO trips ( t_search, t_origin, t_dest1, t_dest2, t_dest3, t_date, t_hour, t_comments, t_users_id ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
       // eslint-disable-next-line camelcase
-      [search, origin, to1, to2, to3, day, hour, comments, users_id]
+      [search, origin, dest1, dest2, dest3, day, hour, comments, users_id]
     )
     .then(([result]) => {
       res.location(`/trips/${result.insertId}`).sendStatus(201);
     });
 };
 
-const deleteTrips = (req, res) => {
+const deleteTripsById = (req, res) => {
   const { id } = req.params;
   sqldb
-    .query("DELETE FROM trips WHERE id = ?", [id])
+    .query("DELETE FROM trips WHERE t_id = ?", [id])
     .then(([erase]) => {
       if (erase.affectedRows === 0) {
         res.status(404).send("Not Found");
@@ -80,6 +80,6 @@ const deleteTrips = (req, res) => {
 module.exports = {
   getTrips,
   postTrips,
-  deleteTrips,
+  deleteTripsById,
   getTripsByUser,
 };

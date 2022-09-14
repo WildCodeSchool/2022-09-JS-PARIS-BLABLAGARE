@@ -9,7 +9,7 @@ const getUser = (req, res) => {
   // eslint-disable-next-line prefer-destructuring
   const alias = req.params.alias;
   sqldb
-    .query("select * from users where alias = ?", [alias])
+    .query("select * from users where u_alias = ?", [alias])
     .then(([users]) => {
       if (users[0] != null) {
         res.json(users[0]);
@@ -23,11 +23,11 @@ const getUser = (req, res) => {
 };
 
 const postUsers = (req, res) => {
-  const { firstname, lastname, Email, alias, hashedPassword } = req.body;
+  const { firstname, lastname, email, alias, hashedPassword } = req.body;
   sqldb
     .query(
-      "INSERT INTO users ( firstname, lastname, Email, alias, hashedPassword ) VALUES (?, ?, ?, ?, ?)",
-      [firstname, lastname, Email, alias, hashedPassword]
+      "INSERT INTO users ( u_firstname, u_lastname, u_email, u_alias, u_hashedPassword ) VALUES (?, ?, ?, ?, ?)",
+      [firstname, lastname, email, alias, hashedPassword]
     )
     .then(([result]) => {
       res.location(`/users/${result.insertId}`).sendStatus(201);
@@ -37,7 +37,7 @@ const postUsers = (req, res) => {
 const deleteUsers = (req, res) => {
   const { id } = req.params;
   sqldb
-    .query("DELETE FROM users WHERE id = ?", [id])
+    .query("DELETE FROM users WHERE u_id = ?", [id])
     .then(([erase]) => {
       if (erase.affectedRows === 0) {
         res.status(404).send("Not Found");
@@ -52,12 +52,12 @@ const deleteUsers = (req, res) => {
 
 const updateUsers = (req, res) => {
   const { id } = req.params;
-  const { firstname, lastname, Email, alias, hashedPassword } = req.body;
+  const { firstname, lastname, email, alias, hashedPassword } = req.body;
   sqldb
     .query(
-      "UPDATE users SET firstname =?, lastname =?, Email =?, alias =?, hashedPassword =? where id =?",
+      "UPDATE users SET u_firstname =?, u_lastname =?, u_email =?, u_alias =?, u_hashedPassword =? where u_id =?",
       // eslint-disable-next-line no-undef
-      [firstname, lastname, Email, alias, hashedPassword, id]
+      [firstname, lastname, email, alias, hashedPassword, id]
     )
     .then(([result]) => {
       if (result.affectedRows === 0) {

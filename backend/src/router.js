@@ -16,6 +16,6 @@ router.put("/users/:id", validateUser, usersControllers.updateUsers);
 router.get("/trips", tripsControllers.getTrips);
 router.get("/trips/:id", tripsControllers.getTripsByUser);
 router.post("/trips", tripsControllers.postTrips);
-router.delete("/trips/:id", tripsControllers.deleteTrips);
+router.delete("/trips/:id", tripsControllers.deleteTripsById);
 
 module.exports = router;
