@@ -2,7 +2,10 @@
   margin: 0;
   padding: 0;
 }
-
+@font-face {
+  font-family: "Avenir light";
+  src: url("../../assets/fonts/avenir/AvenirLTStd-Light.otf") format("opentype");
+}
 .logo {
   position: absolute;
   bottom: 0;
@@ -11,6 +14,7 @@
 }
 h3 {
   display: none;
+  font-family: "Avenir light";
 }
 
 @media screen and (min-width: 1024px) {
