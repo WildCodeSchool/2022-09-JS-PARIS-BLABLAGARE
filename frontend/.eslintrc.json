@@ -17,6 +17,9 @@
   },
   "plugins": ["react", "import"],
   "rules": {
+    "react/button-has-type": [0],
+    "react/prop-types": [0],
+    "react/jsx-props-no-spreading": "off",
     "no-console": "off",
     "no-restricted-syntax": [
       "error",
