@@ -73,4 +73,31 @@ const updateUsers = (req, res) => {
     });
 };
 
-module.exports = { getUsers, getUser, postUsers, deleteUsers, updateUsers };
+const getUserByAliasWithPasswordAndPassToNext = (req, res, next) => {
+  const { alias } = req.body;
+
+  sqldb
+    .query("SELECT * FROM users WHERE u_alias =?", [alias])
+    .then(([users]) => {
+      if (users[0] != null) {
+        // eslint-disable-next-line prefer-destructuring
+        req.user = users[0];
+        next();
+      } else {
+        res.sendStatus(401);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error retrieving data from database");
+    });
+};
+
+module.exports = {
+  getUsers,
+  getUser,
+  postUsers,
+  deleteUsers,
+  updateUsers,
+  getUserByAliasWithPasswordAndPassToNext,
+};
