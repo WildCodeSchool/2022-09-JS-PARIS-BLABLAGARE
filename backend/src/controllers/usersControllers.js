@@ -29,6 +29,9 @@ const postUsers = (req, res) => {
       "INSERT INTO users ( u_firstname, u_lastname, u_email, u_alias, u_hashedPassword ) VALUES (?, ?, ?, ?, ?)",
       [firstname, lastname, email, alias, hashedPassword]
     )
+    .catch((err) => {
+      res.status(409).send(`erreur ${err}`);
+    })
     .then(([result]) => {
       res.location(`/users/${result.insertId}`).sendStatus(201);
     });

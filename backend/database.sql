@@ -3,7 +3,7 @@ CREATE TABLE users (
   u_firstname varchar(30) NOT NULL,
   u_lastname varchar(30) NOT NULL,
   u_email varchar(30) UNIQUE NOT NULL,
-  u_alias varchar(30) NOT NULL,
+  u_alias varchar(30) UNIQUE NOT NULL,
   u_hashedPassword varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
