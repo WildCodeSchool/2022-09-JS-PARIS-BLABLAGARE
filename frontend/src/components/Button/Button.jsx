@@ -2,8 +2,7 @@ import React from "react";
 import "./Button.css";
 
 export default function Button({
-  name,
-  label,
+  idButton,
   type,
   champButton,
   classButton,
@@ -11,10 +10,12 @@ export default function Button({
 }) {
   return (
     <div className="button-container">
-      <label className="" id={name} htmlFor={name}>
-        {label}
-      </label>
-      <button type={type} className={classButton} id={name} onClick={onClick}>
+      <button
+        type={type}
+        className={classButton}
+        id={idButton}
+        onClick={onClick}
+      >
         {champButton}
       </button>
     </div>
