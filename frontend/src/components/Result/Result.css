@@ -59,9 +59,9 @@ h2 {
   padding: 10px;
 }
 
-@media (min-width:768px) {
+@media (min-width: 768px) {
   .result-container {
     display: flex;
     flex-direction: row;
-}
+  }
 }
