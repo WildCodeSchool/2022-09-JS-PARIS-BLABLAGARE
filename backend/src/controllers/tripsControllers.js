@@ -2,19 +2,19 @@ const { sqldb } = require("../../db");
 
 const getTrips = (req, res) => {
   let tripsFilter =
-    "select u_alias, t_id, t_search, t_origin, t_dest1, t_dest2, t_dest3, DATE_FORMAT(t_date, '%d %m %Y') AS day, t_hour, t_comments, u_email from trips INNER JOIN users ON users.u_id = trips.t_users_id";
+    "SELECT u_alias, t_id, t_search, t_origin, t_dest1, t_dest2, t_dest3, DATE_FORMAT(t_date, '%d %m %Y') AS day, t_hour, t_comments, u_email FROM trips INNER JOIN users ON users.u_id = trips.t_users_id";
   const tripsValues = [];
 
   if (req.query.origin != null) {
-    tripsFilter += " where t_origin = ?";
+    tripsFilter += " WHERE t_origin = ?";
     tripsValues.push(req.query.origin);
 
     if (req.query.day != null) {
-      tripsFilter += "and t_date = ? ";
+      tripsFilter += "AND t_date = ? ";
       tripsValues.push(req.query.day);
 
       if (req.query.hour != null) {
-        tripsFilter += "and t_hour >= ? ORDER BY t_hour";
+        tripsFilter += "AND t_hour >= ? ORDER BY t_hour";
         tripsValues.push(req.query.hour);
       }
     }
@@ -35,7 +35,7 @@ const getTripsByUser = (req, res) => {
   id = parseInt(id, 10);
   sqldb
     .query(
-      "select u_alias, t_search, t_origin, t_dest1, t_dest2, t_dest3, t_date, t_hour from trips INNER JOIN users ON users.u_id = trips.t_users_id WHERE t_users_id = ?",
+      "SELECT u_alias, t_search, t_origin, t_dest1, t_dest2, t_dest3, t_date, t_hour FROM trips INNER JOIN users ON users.u_id = trips.t_users_id WHERE t_users_id = ?",
       [id]
     )
     .then(([trips]) => {
