@@ -1,7 +1,7 @@
 const { sqldb } = require("../../db");
 
 const getUsers = async (req, res) => {
-  const users = await sqldb.query("select * from users");
+  const users = await sqldb.query("SELECT * FROM users");
   res.status(201).json(users);
 };
 
@@ -9,7 +9,7 @@ const getUser = (req, res) => {
   // eslint-disable-next-line prefer-destructuring
   const alias = req.params.alias;
   sqldb
-    .query("select * from users where u_alias = ?", [alias])
+    .query("SELECT * FROM users WHERE u_alias = ?", [alias])
     .then(([users]) => {
       if (users[0] != null) {
         res.json(users[0]);
@@ -29,6 +29,9 @@ const postUsers = (req, res) => {
       "INSERT INTO users ( u_firstname, u_lastname, u_email, u_alias, u_hashedPassword ) VALUES (?, ?, ?, ?, ?)",
       [firstname, lastname, email, alias, hashedPassword]
     )
+    .catch((err) => {
+      res.status(409).send(`erreur ${err}`);
+    })
     .then(([result]) => {
       res.location(`/users/${result.insertId}`).sendStatus(201);
     });
@@ -55,7 +58,7 @@ const updateUsers = (req, res) => {
   const { firstname, lastname, email, alias, hashedPassword } = req.body;
   sqldb
     .query(
-      "UPDATE users SET u_firstname =?, u_lastname =?, u_email =?, u_alias =?, u_hashedPassword =? where u_id =?",
+      "UPDATE users SET u_firstname =?, u_lastname =?, u_email =?, u_alias =?, u_hashedPassword =? WHERE u_id =?",
       // eslint-disable-next-line no-undef
       [firstname, lastname, email, alias, hashedPassword, id]
     )

@@ -1,5 +1,6 @@
 import React from "react";
 import "./inscription.css";
+import Button from "../Button/Button";
 
 function Inscription() {
   return (
@@ -29,9 +30,7 @@ function Inscription() {
           Confirmation:
           <input id="confMdp" type="password" name="name" />
         </label>
-        <button id="btn" type="submit">
-          Valider
-        </button>
+        <Button idButton="btn" champButton="Valider" type="submit" />
       </form>
     </div>
   );
