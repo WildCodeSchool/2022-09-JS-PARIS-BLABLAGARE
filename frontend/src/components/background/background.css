@@ -6,6 +6,7 @@
   font-family: "Avenir light";
   src: url("../../assets/fonts/avenir/AvenirLTStd-Light.otf") format("opentype");
 }
+
 .logo {
   position: absolute;
   bottom: 0;
