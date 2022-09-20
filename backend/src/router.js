@@ -3,7 +3,13 @@ const express = require("express");
 const router = express.Router();
 
 const { validateUser } = require("./validators");
-const { hashPassword, verifyPassword, verifyToken } = require("./auth");
+const {
+  hashPassword,
+  verifyPassword,
+  verifyToken,
+  killToken,
+  isTokenKilled,
+} = require("./auth");
 
 const usersControllers = require("./controllers/usersControllers");
 const tripsControllers = require("./controllers/tripsControllers");
@@ -16,8 +22,9 @@ router.post(
   usersControllers.getUserByAliasWithPasswordAndPassToNext,
   verifyPassword
 );
+router.post("/users/logout", killToken);
 
-router.use(verifyToken);
+router.use(verifyToken, isTokenKilled);
 router.get("/users/:alias", usersControllers.getUser);
 router.delete("/users/:id", usersControllers.deleteUsers);
 router.put("/users/:id", validateUser, usersControllers.updateUsers);
