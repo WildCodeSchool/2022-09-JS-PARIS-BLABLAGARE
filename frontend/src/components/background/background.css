@@ -6,20 +6,20 @@
   font-family: "Avenir light";
   src: url("../../assets/fonts/avenir/AvenirLTStd-Light.otf") format("opentype");
 }
- .background {
+.background {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  }
+}
 .logo {
   width: 25vw;
-  }
+}
 
 h4 {
   margin: 5%;
-  color: #CD0037;
+  color: #cd0037;
 }
 h3 {
   display: none;
@@ -31,13 +31,13 @@ h3 {
     display: flex;
     justify-content: space-between;
     width: 100%;
- }
+  }
   .logo {
     width: 15vw;
-    }
+  }
   h3 {
-      display: flex;
-      text-align: center;
-      justify-content: center;
+    display: flex;
+    text-align: center;
+    justify-content: center;
   }
 }
