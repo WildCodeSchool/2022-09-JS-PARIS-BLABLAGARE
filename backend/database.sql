@@ -21,4 +21,8 @@ CREATE TABLE trips (
   Constraint fk_UsersTrips foreign key (t_users_id) REFERENCES users(u_id) ON DELETE cascade
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE killedTokens (
+  token VARCHAR(255) NOT NULL PRIMARY KEY
+);
+
 -- INSERT INTO item (title) VALUES ('Stuff'), ('Doodads');

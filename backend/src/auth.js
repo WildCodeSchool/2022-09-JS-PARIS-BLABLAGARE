@@ -1,5 +1,6 @@
 const argon2 = require("argon2");
 const jwt = require("jsonwebtoken");
+const { sqldb } = require("../db");
 
 const hashingOptions = {
   type: argon2.argon2id,
@@ -30,7 +31,7 @@ const verifyPassword = (req, res) => {
       if (isVerified) {
         const payload = { sub: req.user.id };
         const token = jwt.sign(payload, process.env.JWT_SECRET, {
-          expiresIn: "30m",
+          expiresIn: "1h",
         });
         delete req.user.hashedPassword;
         res.send({ token, user: req.user });
@@ -65,8 +66,48 @@ const verifyToken = (req, res, next) => {
   }
 };
 
+const killToken = (req, res) => {
+  const authorizationHeader = req.get("Authorization");
+  if (authorizationHeader == null) {
+    throw new Error("Authorization header is missing");
+  }
+  const [, token] = authorizationHeader.split(" ");
+  sqldb
+    .query("INSERT INTO killedTokens (token) VALUE (?)", [token])
+    .then(([insertedToken]) => {
+      console.warn("TOKEN ID", insertedToken.insertId);
+      res.send("USER LOGGED OUT");
+    })
+    .catch((err) => {
+      console.warn("ERROR IN killedTokens", err);
+      res.sendStatus(400);
+    });
+};
+
+const isTokenKilled = (req, res, next) => {
+  const authorizationHeader = req.get("Authorization");
+  if (authorizationHeader == null) {
+    throw new Error("Authorization header is missing");
+  }
+  const [, token] = authorizationHeader.split(" ");
+  sqldb
+    .query("SELECT * FROM killedTokens WHERE token=?", [token])
+    .then(([tokens]) => {
+      if (tokens[0] != null) {
+        res.send("TOKEN EXPIRED");
+      }
+      next();
+    })
+    .catch((err) => {
+      console.warn("ERROR IN killedTokens", err);
+      res.sendStatus(400);
+    });
+};
+
 module.exports = {
   hashPassword,
   verifyPassword,
   verifyToken,
+  killToken,
+  isTokenKilled,
 };
