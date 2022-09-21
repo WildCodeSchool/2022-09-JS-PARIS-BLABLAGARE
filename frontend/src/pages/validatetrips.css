@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.validateTrips {
+  display: flex;
+  flex-direction: column;
+}
+
+.picture {
+  display: none;
+}
+nav {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (min-width: 768px) {
+  .validateTrips {
+    display: grid;
+    grid-template-areas:
+      "nav nav"
+      "confirmation picture"
+      "back back";
+    grid-template-columns: 50% 1fr;
+    grid-template-rows: 1fr;
+  }
+  nav {
+    grid-area: nav;
+    height: auto;
+  }
+  .confirmation {
+    grid-area: confirmation;
+  }
+  .picture {
+    grid-area: picture;
+    display: flex;
+  }
+  .background {
+    grid-area: back;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .validateTrips {
+    background-image: url("../assets/picture.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .picture {
+    display: none;
+  }
+  .confirmation {
+    width: 60vh;
+  }
+}
