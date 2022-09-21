@@ -24,6 +24,8 @@
     "i": "^0.3.7",
     "jsonwebtoken": "^8.5.1",
     "npm": "^8.19.2",
-    "react-router-dom": "^6.4.0"
+    "react": "^18.2.0",
+    "react-router-dom": "^6.4.0",
+    "router-dom": "^2.2.9"
   }
 }
