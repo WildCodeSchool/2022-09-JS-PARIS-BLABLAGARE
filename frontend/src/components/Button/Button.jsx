@@ -7,6 +7,7 @@ export default function Button({
   champButton,
   classButton,
   onClick,
+  disabled,
 }) {
   return (
     <div className="button-container">
@@ -15,6 +16,7 @@ export default function Button({
         className={classButton}
         id={idButton}
         onClick={onClick}
+        disabled={disabled}
       >
         {champButton}
       </button>

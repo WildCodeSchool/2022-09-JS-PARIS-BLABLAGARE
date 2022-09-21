@@ -8,7 +8,7 @@
     src: url("../../assets/fonts/avenir/AvenirLTStd-Book.otf") format("opentype");
   } */
 
-.connexion {
+form {
   height: 40vh;
   width: 60vw;
   background-color: #0088ce;
@@ -34,9 +34,15 @@
   border: none;
 }
 
+button[type="submit"]:hover {
+  transform: translateY(2px);
+  box-shadow: 0 1px #272463;
+}
+button[type="submit"]:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px #1e447e;
+}
 button {
-  display: flex;
-  flex-direction: column;
   width: 140px;
   height: 25px;
   margin: 5px;
@@ -44,7 +50,12 @@ button {
   border: solid 2px white;
   border-radius: 5px;
   color: white;
-  padding: 3px 5px 5px 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px #34373a;
+  font-family: "Avenir book";
 }
 
 @media screen and (min-width: 768px) {

@@ -29,6 +29,8 @@ function Inscription() {
     }
   }
 
+  const isConfirmPassword = password !== confirmPassword;
+
   return (
     <div className="inscription">
       <form>
@@ -91,6 +93,7 @@ function Inscription() {
           placeholder="jean_bon@herta.fr"
         />
         <Button
+          disabled={isConfirmPassword}
           idButton="btn"
           champButton="Valider"
           type="submit"

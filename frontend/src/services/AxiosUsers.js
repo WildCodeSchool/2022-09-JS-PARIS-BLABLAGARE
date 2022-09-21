@@ -2,18 +2,20 @@ import axios from "axios";
 
 const postProfile = async (
   data,
-  setState1,
-  setState2,
-  setState3,
-  setState4,
-  setState5
+  setStateFirstName,
+  setStatelastName,
+  setStateEmail,
+  setStateAlias,
+  setStatePassword
 ) => {
   const response = await axios.post(`http://localhost:5000/users`, data);
-  if (response.data) setState1("");
-  setState2("");
-  setState3("");
-  setState4("");
-  setState5("");
+  if (response.data) {
+    setStateFirstName("");
+    setStatelastName("");
+    setStateEmail("");
+    setStateAlias("");
+    setStatePassword("");
+  }
 };
 
 export default postProfile;
