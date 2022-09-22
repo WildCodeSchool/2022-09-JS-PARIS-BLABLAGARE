@@ -7,7 +7,6 @@ import CreateCount from "./pages/CreateCount/CreateCount";
 import UserContext from "./Context/UserContext";
 import UserOptionContext from "./Context/UserOptionContext";
 import Proposition from "./components/proposition/Proposition";
-import Login from "./pages/Login/Login";
 import "./App.css";
 
 function App() {
