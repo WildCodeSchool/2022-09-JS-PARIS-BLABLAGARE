@@ -42,6 +42,7 @@ function Inscription() {
           value={firstname}
           name="firstName"
           placeholder="Jean"
+          required="required"
         />
         <Input
           forId="lastName"
@@ -51,6 +52,7 @@ function Inscription() {
           value={lastname}
           name="lastName"
           placeholder="Bon"
+          required="required"
         />
         <Input
           forId="name"
@@ -60,6 +62,7 @@ function Inscription() {
           value={alias}
           name="alias"
           placeholder="Babe"
+          required="required"
         />
         <Input
           forId="mdp"
@@ -70,6 +73,8 @@ function Inscription() {
           name="mdp1"
           autoComplete="on"
           placeholder="Mot de passe"
+          minlength={6}
+          required="required"
         />
         <Input
           forId="confMdp"
@@ -81,6 +86,7 @@ function Inscription() {
           name="mdp2"
           autoComplete="on"
           placeholder="Mot de passe"
+          required="required"
         />
         {passwordMessage !== null && <span> {passwordMessage}</span>}
         <Input
@@ -91,6 +97,7 @@ function Inscription() {
           value={email}
           name="email"
           placeholder="jean_bon@herta.fr"
+          required="required"
         />
         <Button
           disabled={isConfirmPassword}

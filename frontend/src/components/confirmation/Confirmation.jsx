@@ -1,11 +1,36 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./confirmation.css";
+import UserOptionContext from "../../Context/UserOptionContext";
 
 export default function confirmation() {
+  const { userOption, setUserOption } = useContext(UserOptionContext);
   return (
     <div className="confirmation">
-      <p>Offre bien prise en compte. </p>
-      <p>Merci User !</p>
+      {(() => {
+        switch (userOption) {
+          case "Proposition":
+            return (
+              <>
+                <p>Offre bien prise en compte.</p> <p>Merci User !</p>{" "}
+              </>
+            );
+          case "Recherche":
+            return (
+              <>
+                <p>Message envoyé.</p> <p>Merci User !</p>{" "}
+              </>
+            );
+          case "Suppresion":
+            return (
+              <>
+                <p>Annonce bien supprimée.</p> <p>Merci User !</p>{" "}
+              </>
+            );
+          default:
+            return null;
+        }
+      })()}
+      ;
     </div>
   );
 }

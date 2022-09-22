@@ -3,14 +3,14 @@
   padding: 0;
 }
 
-/* @font-face {
-    font-family: "Avenir book";
-    src: url("../../assets/fonts/avenir/AvenirLTStd-Book.otf") format("opentype");
-  } */
+@font-face {
+  font-family: "Avenir book";
+  src: url("../../assets/fonts/avenir/AvenirLTStd-Book.otf") format("opentype");
+}
 
-.user {
-  height: 50vh;
-  width: 70vw;
+.home {
+  height: 20vh;
+  width: 60vw;
   background-color: #0088ce;
   border-radius: 20px;
   display: flex;
@@ -23,27 +23,24 @@
   margin-right: auto;
 }
 
-ul {
-  margin-bottom: 15px;
-}
-
 li {
-  padding: 15px;
+  padding: 10px;
 }
 
 @media screen and (min-width: 768px) {
-  .user {
-    height: 50vh;
+  .home {
+    height: 30vh;
     width: 35vw;
     margin-left: 40px;
+    font-size: 20px;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .user {
-    height: 40vh;
-    width: 35vw;
+  .home {
+    height: 30vh;
+    width: 25vw;
     margin-left: auto;
-    font-size: 20px;
+    font-size: 25px;
   }
 }

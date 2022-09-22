@@ -15,6 +15,7 @@ export default function Input({
   className,
   autoComplete,
   onBlur,
+  required,
 }) {
   return (
     <div className="input-container">
@@ -35,6 +36,7 @@ export default function Input({
         maxLength={maxlength}
         autoComplete={autoComplete}
         onBlur={onBlur}
+        required={required}
       />
     </div>
   );

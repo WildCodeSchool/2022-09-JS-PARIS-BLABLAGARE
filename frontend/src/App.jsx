@@ -1,40 +1,29 @@
 import React, { useState } from "react";
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import Home from "./pages/Home";
-import ValidateTrips from "./pages/ValidateTrips";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import ValidateTrips from "./pages/Validatetrips/ValidateTrips";
 import UserContext from "./Context/UserContext";
+import UserOptionContext from "./Context/UserOptionContext";
 import "./App.css";
-import Connexion from "./components/Connexion/Connexion";
-import Inscription from "./components/Inscription/Inscription";
 
 function App() {
   const [aliasUser, setAliasUser] = useState([]);
+  const [userOption, setUserOption] = useState("");
 
   return (
     <UserContext.Provider value={{ aliasUser, setAliasUser }}>
-      <div className="App">
-        <Inscription />
-
-        <Router>
-          <div>
-            <nav>
-              <ul>
-                <li>
-                  <Link to="/Home">Home</Link>
-                </li>
-                <li>
-                  <Link to="/ValidateTrips">ValidateTrips</Link>
-                </li>
-              </ul>
-            </nav>
-            <Routes>
-              <Route path="/Home" element={<Home />} />
-              <Route path="/ValidateTrips" element={<ValidateTrips />} />
-            </Routes>
-          </div>
-        </Router>
-      </div>
+      <UserOptionContext.Provider value={{ userOption, setUserOption }}>
+        <div className="App">
+          <Router>
+            <div>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/ValidateTrips" element={<ValidateTrips />} />
+              </Routes>
+            </div>
+          </Router>
+        </div>
+      </UserOptionContext.Provider>
     </UserContext.Provider>
   );
 }

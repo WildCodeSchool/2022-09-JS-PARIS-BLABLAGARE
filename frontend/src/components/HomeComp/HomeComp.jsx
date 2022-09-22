@@ -1,9 +1,9 @@
 import React from "react";
-import "./acceuil.css";
+import "./HomeComp.css";
 
-function Acceuil() {
+function HomeComp() {
   return (
-    <div className="acceuil">
+    <div className="home">
       <ul>
         <li>Créer un compte</li>
         <li>Me connecter</li>
@@ -12,4 +12,4 @@ function Acceuil() {
   );
 }
 
-export default Acceuil;
+export default HomeComp;

@@ -3,7 +3,7 @@ import "./Connexion.css";
 import axios from "axios";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
-import Home from "../../pages/Home";
+import Accueil from "../Accueil/Accueil";
 import UserContext from "../../Context/UserContext";
 
 function Connexion() {
@@ -26,7 +26,7 @@ function Connexion() {
     );
     if (response.data) {
       setAliasUser(response.data.user);
-      console.warn(response.data.user);
+      // console.warn(response.data.user);
     }
     setAlias("");
     setPassword("");
@@ -36,7 +36,7 @@ function Connexion() {
     <div>
       {sucess ? (
         <div>
-          <Home />
+          <Accueil />
         </div>
       ) : (
         <div className="connexion">
