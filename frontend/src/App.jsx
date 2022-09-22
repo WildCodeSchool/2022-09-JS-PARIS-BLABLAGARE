@@ -7,6 +7,7 @@ import CreateCount from "./pages/CreateCount/CreateCount";
 import UserContext from "./Context/UserContext";
 import UserOptionContext from "./Context/UserOptionContext";
 import UserChoice from "./pages/UserChoice/UserChoice";
+import MyTrips from "./pages/MyTrips/MyTrips";
 import "./App.css";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/Login" element={<Login />} />
                 <Route path="/CreateCount" element={<CreateCount />} />
                 <Route path="/UserChoice" element={<UserChoice />} />
+                <Route path="/MyTrips" element={<MyTrips />} />
               </Routes>
             </div>
           </Router>
