@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "./CardConfirmation.css";
 import UserOptionContext from "../../Context/UserOptionContext";
 
-export default function confirmation() {
+export default function Confirmation() {
   const { userOption, setUserOption } = useContext(UserOptionContext);
   return (
     <div className="confirmation">

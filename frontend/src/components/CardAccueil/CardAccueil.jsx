@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import UserContext from "../../Context/UserContext";
 import "./CardAccueil.css";
+import { Link } from "react-router-dom";
 
-export default function Home() {
+
+export default function Accueil() {
   const { aliasUser } = useContext(UserContext);
 
   return (
@@ -10,9 +12,15 @@ export default function Home() {
       <h3>Bienvenue {aliasUser.u_alias} !</h3>
 
       <ul>
-        <li>Je propose un acheminement</li>
-        <li>Je recherche un acheminement</li>
-        <li>Voir mes acheminements</li>
+        <li>
+        <Link to="UserChoise">Je propose un acheminement</Link>
+        </li>
+        <li>
+        <Link to="UserChoise">Je recherche un acheminement</Link>
+        </li>
+        <li>
+        <Link to="MyTrips">Voir mes acheminements</Link>
+        </li>
       </ul>
     </div>
   );
