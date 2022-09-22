@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./HomeComp.css";
 
 function HomeComp() {
   return (
     <div className="home">
       <ul>
-        <li>Créer un compte</li>
-        <li>Me connecter</li>
+        <Link to="/CreateCount">Créer un compte</Link>
+        <Link to="/Login">Connexion</Link>
       </ul>
     </div>
   );

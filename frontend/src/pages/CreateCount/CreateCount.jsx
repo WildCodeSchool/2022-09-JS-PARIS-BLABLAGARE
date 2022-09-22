@@ -1,13 +1,14 @@
+import React from "react";
 import Background from "../../components/background/Background";
 import Navbar from "../../components/navBar/Navbar";
-import Connexion from "../../components/connexion/Connexion";
-import "./Login.css";
+import Inscription from "../../components/inscription/Inscription";
+import "./createCount.css";
 
-export default function Login() {
+export default function createCount() {
   return (
     <>
       <Navbar />
-      <Connexion />
+      <Inscription />
       <Background />
     </>
   );

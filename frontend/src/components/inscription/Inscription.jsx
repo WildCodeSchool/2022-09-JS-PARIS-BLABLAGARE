@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Inscription.css";
+import "./inscription.css";
 import postProfile from "../../services/AxiosUsers";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
