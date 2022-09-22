@@ -1,5 +1,5 @@
 import React from "react";
-import "./picture.css";
+import "./Pictureback.css";
 import picture from "../../assets/picture.png";
 
 function Pictureback() {

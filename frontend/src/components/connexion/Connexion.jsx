@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
-import "./Connexion.css";
+import "./connexion.css";
 import axios from "axios";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
-import Accueil from "../Accueil/Accueil";
+import Accueil from "../CardAccueil/CardAccueil";
 import UserContext from "../../Context/UserContext";
 
 function Connexion() {

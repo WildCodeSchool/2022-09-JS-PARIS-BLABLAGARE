@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import UserContext from "../../Context/UserContext";
-import "./Accueil.css";
+import "./CardAccueil.css";
 
 export default function Home() {
   const { aliasUser } = useContext(UserContext);

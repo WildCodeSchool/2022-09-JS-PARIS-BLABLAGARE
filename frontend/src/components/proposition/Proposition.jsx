@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import UserContext from "../../Context/UserContext";
 import "./proposition.css";
 
 function Proposition() {
+  const { aliasUser } = useContext(UserContext);
   return (
     <div className="propositions">
       <div className="text">
-        <h3>Bienvenue User!</h3>
+        <h3> {aliasUser.u_alias} </h3>
         <h4>Acheminement proposé:</h4>
         <label htmlFor="gare-select">Depuis la gare de:</label>
 
@@ -31,14 +33,7 @@ function Proposition() {
 
         <div className="dateTime">
           <label htmlFor="date">Le:</label>
-          <input
-            id="dated"
-            type="date"
-            name="trip-start"
-            value="2022-09-01"
-            min="2022-01-01"
-            max="2022-12-01"
-          />
+          <input id="dated" type="date" name="trip-start" min="2022-01-01" />
 
           <label htmlFor="time">à:</label>
           <input

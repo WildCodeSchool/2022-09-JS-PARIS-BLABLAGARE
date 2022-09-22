@@ -1,5 +1,5 @@
 import Background from "../../components/background/Background";
-import Navbar from "../../components/NavBar/Navbar";
+import Navbar from "../../components/navBar/Navbar";
 import Covoit from "../../assets/covoit1.jpg";
 import "./Home.css";
 import HomeComp from "../../components/HomeComp/HomeComp";

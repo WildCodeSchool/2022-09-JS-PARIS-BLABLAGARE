@@ -4,6 +4,8 @@ import Home from "./pages/Home/Home";
 import ValidateTrips from "./pages/Validatetrips/ValidateTrips";
 import UserContext from "./Context/UserContext";
 import UserOptionContext from "./Context/UserOptionContext";
+import Proposition from "./components/proposition/Proposition";
+import Login from "./pages/Login/Login";
 import "./App.css";
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/ValidateTrips" element={<ValidateTrips />} />
+                <Route path="/Proposition" element={<Proposition />} />
+                <Route path="/Login" element={<Login />} />
               </Routes>
             </div>
           </Router>
