@@ -3,7 +3,7 @@ import "./CardNavBar.css";
 import { Link } from "react-router-dom";
 import logoSncf from "../../assets/LOGO_SNCF_GROUPE_RVB.png";
 
-function navBar() {
+function NavBar() {
   return (
     <ul className="nav">
       <a href="https://www.sncf.com/fr">
@@ -17,4 +17,4 @@ function navBar() {
   );
 }
 
-export default navBar;
+export default NavBar;
