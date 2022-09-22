@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
-import "./connexion.css";
+import "./CardConnexion.css";
 import axios from "axios";
-import Button from "../Button/Button";
-import Input from "../Input/Input";
+import Button from "../CardButton/CardButton";
+import Input from "../CardInput/CardInput";
 import Accueil from "../CardAccueil/CardAccueil";
 import UserContext from "../../Context/UserContext";
 

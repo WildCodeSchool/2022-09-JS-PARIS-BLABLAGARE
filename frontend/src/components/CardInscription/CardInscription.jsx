@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./inscription.css";
+import "./CardInscription.css";
 import postProfile from "../../services/AxiosUsers";
-import Button from "../Button/Button";
-import Input from "../Input/Input";
+import Button from "../CardButton/CardButton";
+import Input from "../CardInput/CardInput";
 
 function Inscription() {
   const [firstname, setFirstname] = useState("");

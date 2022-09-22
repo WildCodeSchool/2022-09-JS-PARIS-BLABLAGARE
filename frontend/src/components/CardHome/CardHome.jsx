@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./HomeComp.css";
+import "./CardHomeComp.css";
 
 function HomeComp() {
   return (

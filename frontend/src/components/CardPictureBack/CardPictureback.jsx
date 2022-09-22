@@ -1,5 +1,5 @@
 import React from "react";
-import "./pictureback.css";
+import "./CardPictureback.css";
 import picture from "../../assets/picture.png";
 
 function Pictureback() {

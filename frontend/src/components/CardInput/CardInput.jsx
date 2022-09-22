@@ -1,5 +1,5 @@
 import React from "react";
-import "./Input.css";
+import "./CardInput.css";
 
 export default function Input({
   type,

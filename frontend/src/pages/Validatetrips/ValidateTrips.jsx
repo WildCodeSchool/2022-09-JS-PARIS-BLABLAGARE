@@ -1,8 +1,8 @@
 import React from "react";
-import Background from "../../components/background/Background";
-import Pictureback from "../../components/PictureBack/Pictureback";
-import Confirmation from "../../components/confirmation/Confirmation";
-import Navbar from "../../components/navBar/Navbar";
+import Background from "../../components/CardBackground/CardBackground";
+import Pictureback from "../../components/CardPictureBack/CardPictureback";
+import Confirmation from "../../components/CardConfirmation/CardConfirmation";
+import Navbar from "../../components/CardNavBar/CardNavbar";
 import "./Validatetrips.css";
 
 export default function ValidateTrips() {

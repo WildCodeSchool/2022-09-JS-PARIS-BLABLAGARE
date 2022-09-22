@@ -1,8 +1,8 @@
-import Background from "../../components/background/Background";
-import Navbar from "../../components/navBar/Navbar";
+import Background from "../../components/CardBackground/CardBackground";
+import Navbar from "../../components/CardNavBar/CardNavbar";
 import Covoit from "../../assets/covoit1.jpg";
 import "./Home.css";
-import HomeComp from "../../components/HomeComp/HomeComp";
+import HomeComp from "../../components/CardHome/CardHome";
 
 export default function Home() {
   return (

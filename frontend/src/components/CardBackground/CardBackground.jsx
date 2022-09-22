@@ -1,5 +1,5 @@
 import React from "react";
-import "./background.css";
+import "./CardBackground.css";
 import logo from "../../assets/logo.png";
 
 function Background() {

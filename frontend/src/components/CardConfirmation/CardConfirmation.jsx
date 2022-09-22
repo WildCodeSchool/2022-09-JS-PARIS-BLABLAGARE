@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "./confirmation.css";
+import "./CardConfirmation.css";
 import UserOptionContext from "../../Context/UserOptionContext";
 
 export default function confirmation() {

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Result.css";
+import "./CardResult.css";
 
 function Result() {
   return (

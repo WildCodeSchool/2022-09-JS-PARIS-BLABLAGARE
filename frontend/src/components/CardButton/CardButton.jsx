@@ -1,5 +1,5 @@
 import React from "react";
-import "./Button.css";
+import "./CardButton.css";
 
 export default function Button({
   idButton,

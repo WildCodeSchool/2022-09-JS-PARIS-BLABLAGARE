@@ -6,7 +6,7 @@ import Login from "./pages/Login/Login";
 import CreateCount from "./pages/CreateCount/CreateCount";
 import UserContext from "./Context/UserContext";
 import UserOptionContext from "./Context/UserOptionContext";
-import Proposition from "./components/proposition/Proposition";
+import Proposition from "./components/CardChoise/CardChoise";
 import "./App.css";
 
 function App() {

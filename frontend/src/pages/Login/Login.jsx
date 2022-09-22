@@ -1,6 +1,6 @@
-import Background from "../../components/background/Background";
-import Navbar from "../../components/navBar/Navbar";
-import Connexion from "../../components/connexion/Connexion";
+import Background from "../../components/CardBackground/CardBackground";
+import Navbar from "../../components/CardNavBar/CardNavbar";
+import Connexion from "../../components/CardConnexion/CardConnexion";
 import "./Login.css";
 
 export default function Login() {
