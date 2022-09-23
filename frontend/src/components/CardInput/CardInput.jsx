@@ -16,6 +16,8 @@ export default function Input({
   autoComplete,
   onBlur,
   required,
+  min,
+  max,
 }) {
   return (
     <div className="input-container">
@@ -37,6 +39,8 @@ export default function Input({
         autoComplete={autoComplete}
         onBlur={onBlur}
         required={required}
+        min={min}
+        max={max}
       />
     </div>
   );
