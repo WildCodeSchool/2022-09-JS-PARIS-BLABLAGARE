@@ -27,7 +27,7 @@ function App() {
                 <Route path="/Login" element={<Login />} />
                 <Route path="/CreateCount" element={<CreateCount />} />
                 <Route path="/Accueil" element={<Accueil />} />
-                <Route path="/UserChoice" element={<UserChoice />} />
+                <Route path="/Login/UserChoice" element={<UserChoice />} />
                 <Route path="/MyTrips" element={<MyTrips />} />
               </Routes>
             </div>

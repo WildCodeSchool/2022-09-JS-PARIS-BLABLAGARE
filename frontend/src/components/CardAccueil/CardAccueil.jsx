@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import UserContext from "../../Context/UserContext";
 import "./CardAccueil.css";
-import { Link } from "react-router-dom";
 
-
-export default function Accueil() {
+export default function CardAccueil() {
   const { aliasUser } = useContext(UserContext);
 
   return (
@@ -13,13 +12,13 @@ export default function Accueil() {
 
       <ul>
         <li>
-        <Link to="UserChoise">Je propose un acheminement</Link>
+          <Link to="UserChoice">Je propose un acheminement</Link>
         </li>
         <li>
-        <Link to="UserChoise">Je recherche un acheminement</Link>
+          <Link to="UserChoice">Je recherche un acheminement</Link>
         </li>
         <li>
-        <Link to="MyTrips">Voir mes acheminements</Link>
+          <Link to="MyTrips">Voir mes acheminements</Link>
         </li>
       </ul>
     </div>

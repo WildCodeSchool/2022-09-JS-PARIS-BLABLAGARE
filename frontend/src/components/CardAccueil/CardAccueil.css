@@ -4,9 +4,9 @@
 }
 
 @font-face {
-    font-family: "Avenir book";
-    src: url("../../assets/fonts/avenir/AvenirLTStd-Book.otf") format("opentype");
-  }
+  font-family: "Avenir book";
+  src: url("../../assets/fonts/avenir/AvenirLTStd-Book.otf") format("opentype");
+}
 
 .user {
   height: 50vh;
