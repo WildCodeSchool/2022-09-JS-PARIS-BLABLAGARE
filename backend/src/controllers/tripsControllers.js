@@ -48,13 +48,13 @@ const getTripsByUser = (req, res) => {
 
 const postTrips = (req, res) => {
   // eslint-disable-next-line camelcase
-  const { search, origin, dest1, dest2, dest3, day, hour, comments, users_id } =
+  const { search, origin, dest1, dest2, dest3, date, hour, comments, usersId } =
     req.body;
   sqldb
     .query(
       "INSERT INTO trips ( t_search, t_origin, t_dest1, t_dest2, t_dest3, t_date, t_hour, t_comments, t_users_id ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
       // eslint-disable-next-line camelcase
-      [search, origin, dest1, dest2, dest3, day, hour, comments, users_id]
+      [search, origin, dest1, dest2, dest3, date, hour, comments, usersId]
     )
     .then(([result]) => {
       res.location(`/trips/${result.insertId}`).sendStatus(201);

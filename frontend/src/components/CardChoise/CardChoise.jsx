@@ -1,14 +1,35 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../../Context/UserContext";
 import UserOptionContext from "../../Context/UserOptionContext";
 import Input from "../CardInput/CardInput";
 import Button from "../CardButton/CardButton";
+import postTrips from "../../services/AxiosTrips";
 import "./CardChoise.css";
 
 function Proposition() {
   const { aliasUser } = useContext(UserContext);
-  const { userOption, setUserOption } = useContext(UserOptionContext);
+  const { userOption } = useContext(UserOptionContext);
+  const [search, setSearch] = useState(userOption !== "proposition");
+  const [origin, setOrigin] = useState();
+  const [dest1, setDest1] = useState();
+  const [dest2, setDest2] = useState();
+  const [dest3, setDest3] = useState();
+  const [date, setDate] = useState();
+  const [hour, setHour] = useState();
+  const [comments, setComments] = useState();
+  const [usersId, setUsersId] = useState(aliasUser.u_id);
+  const data = {
+    search,
+    origin,
+    dest1,
+    dest2,
+    dest3,
+    date,
+    hour,
+    comments,
+    usersId,
+  };
 
   return (
     <div className="propositions">
@@ -16,27 +37,34 @@ function Proposition() {
         <h3> {aliasUser.u_alias} </h3>
         {(() => {
           switch (userOption) {
-            case "Proposition":
-              return <h4>Acheminement proposé:</h4>;
-            case "Recherche":
-              return <h4>Acheminement recherché:</h4>;
+            case "proposition":
+              return <h4>Acheminement proposé :</h4>;
+            case "recherche":
+              return <h4>Acheminement recherché :</h4>;
             default:
               return null;
           }
         })()}
+
         <label htmlFor="gare-select">Depuis la gare de:</label>
 
-        <select name="gare" id="dep">
+        {console.warn("Search", search)}
+
+        <select
+          name="gare"
+          id="dep"
+          onChange={(e) => setOrigin(e.target.value)}
+        >
           <option value="">Gare de:</option>
-          <option value="gare1">Nantes</option>
-          <option value="gare2">Brest</option>
-          <option value="gare4">Strasbourg</option>
-          <option value="gare5">Mulhouse</option>
-          <option value="gare6">Metz</option>
-          <option value="gare7">Perpignan</option>
-          <option value="gare8">Frejus</option>
-          <option value="gare9">Vierzon</option>
-          <option value="gare10">Bayonne</option>
+          <option value="Nantes">Nantes</option>
+          <option value="Brest">Brest</option>
+          <option value="Strasbourg">Strasbourg</option>
+          <option value="Mulhouse">Mulhouse</option>
+          <option value="Metz">Metz</option>
+          <option value="Perpignan">Perpignan</option>
+          <option value="Frejus">Frejus</option>
+          <option value="Vierzon">Vierzon</option>
+          <option value="Bayonne">Bayonne</option>
         </select>
 
         <Input
@@ -45,13 +73,32 @@ function Proposition() {
           type="text"
           name="name"
           placeholder="Choix1"
+          onChange={(e) => setDest1(e.target.value)}
         />
-        <Input forId="arr2" type="text" name="name" placeholder="Choix2" />
-        <Input forId="arr3" type="text" name="name" placeholder="Choix3" />
+        <Input
+          forId="arr2"
+          type="text"
+          name="name"
+          placeholder="Choix2"
+          onChange={(e) => setDest2(e.target.value)}
+        />
+        <Input
+          forId="arr3"
+          type="text"
+          name="name"
+          placeholder="Choix3"
+          onChange={(e) => setDest3(e.target.value)}
+        />
 
         <div className="dateTime">
           <label htmlFor="date">Le:</label>
-          <input id="dated" type="date" name="trip-start" min="2022-01-01" />
+          <Input
+            forId="dated"
+            type="date"
+            name="trip-start"
+            min="2022-01-01"
+            onChange={(e) => setDate(e.target.value)}
+          />
 
           <label htmlFor="time">à:</label>
           <Input
@@ -60,23 +107,56 @@ function Proposition() {
             name="time"
             min="00:00"
             max="23:59"
+            onChange={(e) => setHour(e.target.value)}
             required
           />
         </div>
 
         <label>
           Commentaires:
-          <textarea id="message" name="message" />
+          <textarea
+            id="message"
+            name="message"
+            onChange={(e) => setComments(e.target.value)}
+          />
         </label>
-        {userOption === "Proposition" ? (
-          <Link to="/ValidateTrips">
-            <Button idButton="btn" type="submit" champButton="Valider" />
-          </Link>
-        ) : (
-          <Link to="/">
-            <Button idButton="btn" type="submit" champButton="Valider" />
-          </Link>
-        )}
+        {(() => {
+          switch (userOption) {
+            case "recherche":
+              return (
+                <Link to="/">
+                  <Button idButton="btn" type="submit" champButton="Valider" />
+                </Link>
+              );
+            case "proposition":
+              return (
+                <Link to="/ValidateTrips">
+                  <Button
+                    idButton="btn"
+                    type="submit"
+                    champButton="Valider"
+                    onClick={(e) =>
+                      postTrips(
+                        data,
+                        setSearch,
+                        setOrigin,
+                        setDest1,
+                        setDest2,
+                        setDest3,
+                        setDate,
+                        setHour,
+                        setComments,
+                        setUsersId,
+                        e
+                      )
+                    }
+                  />
+                </Link>
+              );
+            default:
+              return null;
+          }
+        })()}
       </div>
     </div>
   );
