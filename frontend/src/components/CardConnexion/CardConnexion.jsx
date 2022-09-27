@@ -25,6 +25,8 @@ function Connexion() {
       data
     );
     if (response.data) {
+      const { token } = response.data;
+      sessionStorage.setItem("token", token);
       setAliasUser(response.data.user);
       // console.warn(response.data.user);
     }
