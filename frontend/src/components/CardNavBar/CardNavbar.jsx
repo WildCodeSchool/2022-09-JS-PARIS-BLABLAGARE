@@ -13,7 +13,7 @@ function NavBar() {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="#">Mon compte</Link>
+        <Link to="/">Mon compte</Link>
       </li>
     </ul>
   );

@@ -26,7 +26,7 @@ function App() {
                 <Route path="/ValidateTrips" element={<ValidateTrips />} />
                 <Route path="/Login" element={<Login />} />
                 <Route path="/CreateCount" element={<CreateCount />} />
-                <Route path="/Login/Accueil" element={<Accueil />} />
+                <Route path="/Accueil" element={<Accueil />} />
                 <Route path="/Login/UserChoice" element={<UserChoice />} />
                 <Route path="/MyTrips" element={<MyTrips />} />
               </Routes>

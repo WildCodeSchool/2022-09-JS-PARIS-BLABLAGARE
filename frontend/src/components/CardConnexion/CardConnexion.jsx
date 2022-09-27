@@ -25,10 +25,11 @@ function Connexion() {
       data
     );
     if (response.data) {
+      // console.log("dataaaaaaaa", data)
       const { token } = response.data;
       sessionStorage.setItem("token", token);
       setAliasUser(response.data.user);
-      // console.warn(response.data.user);
+      console.warn(response.data);
     }
     setAlias("");
     setPassword("");
