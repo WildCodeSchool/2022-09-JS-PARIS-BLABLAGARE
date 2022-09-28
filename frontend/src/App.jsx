@@ -13,7 +13,7 @@ import "./App.css";
 
 function App() {
   const [aliasUser, setAliasUser] = useState([]);
-  const [userOption, setUserOption] = useState("Recherche");
+  const [userOption, setUserOption] = useState("");
 
   return (
     <UserContext.Provider value={{ aliasUser, setAliasUser }}>
