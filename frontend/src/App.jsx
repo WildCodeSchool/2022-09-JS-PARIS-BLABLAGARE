@@ -28,7 +28,7 @@ function App() {
                 <Route path="/CreateCount" element={<CreateCount />} />
                 <Route path="/Accueil" element={<Accueil />} />
                 <Route path="/Login/UserChoice" element={<UserChoice />} />
-                <Route path="/MyTrips" element={<MyTrips />} />
+                <Route path="/Login/MyTrips" element={<MyTrips />} />
               </Routes>
             </div>
           </Router>
