@@ -27,8 +27,11 @@ function App() {
                 <Route path="/Login" element={<Login />} />
                 <Route path="/CreateCount" element={<CreateCount />} />
                 <Route path="/Accueil" element={<Accueil />} />
-                <Route path="/Login/UserChoice" element={<UserChoice />} />
-                <Route path="/MyTrips" element={<MyTrips />} />
+                <Route path="/UserChoice" element={<UserChoice />} />
+                <Route
+                  path="/MyTrips/:origin/:date/:hour"
+                  element={<MyTrips />}
+                />
               </Routes>
             </div>
           </Router>

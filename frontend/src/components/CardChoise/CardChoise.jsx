@@ -124,8 +124,27 @@ function Proposition() {
           switch (userOption) {
             case "recherche":
               return (
-                <Link to="/">
-                  <Button idButton="btn" type="submit" champButton="Valider" />
+                <Link to={`/Mytrips/${origin}/${date}/${hour}`}>
+                  <Button
+                    idButton="btn"
+                    type="submit"
+                    champButton="Valider"
+                    onClick={(e) =>
+                      postTrips(
+                        data,
+                        setSearch,
+                        setOrigin,
+                        setDest1,
+                        setDest2,
+                        setDest3,
+                        setDate,
+                        setHour,
+                        setComments,
+                        setUsersId,
+                        e
+                      )
+                    }
+                  />
                 </Link>
               );
             case "proposition":
