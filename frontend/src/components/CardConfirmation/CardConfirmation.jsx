@@ -23,7 +23,7 @@ export default function Confirmation() {
                 <p>Message envoyé.</p> <p>Merci {aliasUser.u_alias} !</p>{" "}
               </>
             );
-          case "Suppresion":
+          case "suppresion":
             return (
               <>
                 <p>Annonce bien supprimée.</p>{" "}

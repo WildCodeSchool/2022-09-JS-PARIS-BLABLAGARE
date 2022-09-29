@@ -1,23 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Button from "../CardButton/CardButton";
+import UserOptionContext from "../../Context/UserOptionContext";
 import "./CardResult.css";
 
-function Result({ day, origin, hour }) {
+function Result({ day, origin, hour, id }) {
   const token = sessionStorage.getItem("token");
+  const { userOption } = useContext(UserOptionContext);
   const [resultTrips, setResultTrips] = useState([]);
+  const url = () => {
+    switch (userOption) {
+      case "recherche":
+        return `http://localhost:5000/trips/${origin}/${day}/${hour}`;
+      case "suppresion":
+        return `http://localhost:5000/trips/${id}`;
+      default:
+        return null;
+    }
+  };
+
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/trips/${origin}/${day}/${hour}`, {
+      .get(url(), {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => response.data)
+
       .then((data) => {
-        console.warn(data);
         setResultTrips(data);
       });
   }, []);
@@ -35,6 +48,16 @@ function Result({ day, origin, hour }) {
                   {data.t_origin} vers {data.t_dest1} {data.t_dest2}{" "}
                   {data.t_dest3}.
                 </p>
+
+                <Link to="/ValidateTrips">
+                  <Button
+                    idButton="btn"
+                    type="submit"
+                    champButton={
+                      userOption === "recherche" ? "Contacter" : "Supprimer"
+                    }
+                  />
+                </Link>
               </div>
             ))}
       </div>
@@ -54,7 +77,9 @@ function Result({ day, origin, hour }) {
                   <Button
                     idButton="btn"
                     type="submit"
-                    champButton="Contacter"
+                    champButton={
+                      userOption === "recherche" ? "Contacter" : "Supprimer"
+                    }
                   />
                 </Link>
               </div>
