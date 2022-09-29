@@ -32,6 +32,7 @@ function App() {
                   path="/MyTrips/:origin/:date/:hour"
                   element={<MyTrips />}
                 />
+                <Route path="/MyTrips/:id" element={<MyTrips />} />
               </Routes>
             </div>
           </Router>

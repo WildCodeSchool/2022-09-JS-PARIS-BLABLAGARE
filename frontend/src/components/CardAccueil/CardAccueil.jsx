@@ -7,6 +7,7 @@ import "./CardAccueil.css";
 export default function CardAccueil() {
   const { aliasUser } = useContext(UserContext);
   const { setUserOption } = useContext(UserOptionContext);
+  const [userId] = useState(aliasUser.u_id);
 
   return (
     <div className="user">
@@ -34,7 +35,14 @@ export default function CardAccueil() {
           </Link>
         </li>
         <li>
-          <Link to="/MyTrips">Voir mes acheminements</Link>
+          <Link
+            to={`/MyTrips/${userId}`}
+            onClick={() => {
+              setUserOption("suppresion");
+            }}
+          >
+            Voir mes acheminements
+          </Link>
         </li>
       </ul>
     </div>
