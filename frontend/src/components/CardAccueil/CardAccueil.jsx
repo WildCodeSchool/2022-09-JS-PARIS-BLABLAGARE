@@ -15,7 +15,7 @@ export default function CardAccueil() {
       <ul>
         <li>
           <Link
-            to="UserChoice"
+            to="/UserChoice"
             onClick={() => {
               setUserOption("proposition");
             }}
@@ -25,7 +25,7 @@ export default function CardAccueil() {
         </li>
         <li>
           <Link
-            to="UserChoice"
+            to="/UserChoice"
             onClick={() => {
               setUserOption("recherche");
             }}
@@ -34,7 +34,7 @@ export default function CardAccueil() {
           </Link>
         </li>
         <li>
-          <Link to="MyTrips">Voir mes acheminements</Link>
+          <Link to="/MyTrips">Voir mes acheminements</Link>
         </li>
       </ul>
     </div>

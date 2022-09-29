@@ -36,21 +36,17 @@ function Inscription() {
   };
 
   function check() {
-    const keys = Object.keys(inputs); // Clés de inputs donc firstname, lastname, email etc..
+    const keys = Object.keys(inputs);
     const emptyInputs = {};
     keys.forEach((key) => {
       if (inputs[key] === "") {
-        emptyInputs[key] = true;
+        emptyInputs[key] = `Le champ ${key} est vide`;
       } else {
-        emptyInputs[key] = false;
+        emptyInputs[key] = null;
       }
     });
     setInputMessage({
-      firstname: emptyInputs.firstname ? `Le champ firstname est vide ` : null,
-      lastname: emptyInputs.lastname ? `Le champ lasttname est vide ` : null,
-      alias: emptyInputs.alias ? `Le champ alias est vide ` : null,
-      email: emptyInputs.email ? `Le champ email est vide ` : null,
-      password: emptyInputs.password ? `Le champ password est vide ` : null,
+      ...emptyInputs,
     });
   }
 
