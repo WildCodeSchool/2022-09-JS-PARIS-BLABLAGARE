@@ -1,35 +1,89 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./CardInscription.css";
-import postProfile from "../../services/AxiosUsers";
 import Button from "../CardButton/CardButton";
 import Input from "../CardInput/CardInput";
 
 function Inscription() {
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [alias, setAlias] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordMessage, setPasswordMessage] = useState(null);
+  const [inputMessage, setInputMessage] = useState({
+    firstname: "",
+    lastname: "",
+    alias: "",
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
 
-  const data = {
-    firstname,
-    lastname,
-    email,
-    alias,
-    password,
+  const initialValues = {
+    firstname: "",
+    lastname: "",
+    email: "",
+    alias: "",
+    password: "",
+    confirmPassword: "",
   };
 
-  function validatePassword(e) {
-    if (password !== confirmPassword) {
+  const [inputs, setInputs] = useState(initialValues);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
+
+  function check() {
+    const keys = Object.keys(inputs); // Clés de inputs donc firstname, lastname, email etc..
+    const emptyInputs = {};
+    keys.forEach((key) => {
+      if (inputs[key] === "") {
+        emptyInputs[key] = true;
+      } else {
+        emptyInputs[key] = false;
+      }
+    });
+    setInputMessage({
+      firstname: emptyInputs.firstname ? `Le champ firstname est vide ` : null,
+      lastname: emptyInputs.lastname ? `Le champ lasttname est vide ` : null,
+      alias: emptyInputs.alias ? `Le champ alias est vide ` : null,
+      email: emptyInputs.email ? `Le champ email est vide ` : null,
+      password: emptyInputs.password ? `Le champ password est vide ` : null,
+    });
+  }
+
+  function inputValid() {
+    let canChangePage = true;
+    const arrayValues = Object.values(inputs);
+    arrayValues.forEach((el) => {
+      if (el === "") {
+        canChangePage = false;
+      }
+    });
+    return canChangePage;
+  }
+
+  const sendData = (e) => {
+    e.preventDefault();
+    check();
+    if (inputValid()) {
+      axios.post(`http://localhost:5000/users`, inputs).then(() => {
+        setInputs(initialValues);
+        navigate("/Login");
+      });
+    }
+  };
+
+  function validatePassword() {
+    if (inputs.password !== inputs.confirmPassword) {
       setPasswordMessage("Mot de passe différent");
     } else {
       setPasswordMessage(null);
     }
   }
-
-  const isConfirmPassword = password !== confirmPassword;
+  const isConfirmPassword = inputs.password !== inputs.confirmPassword;
 
   return (
     <div className="inscription">
@@ -38,83 +92,79 @@ function Inscription() {
           forId="firstName"
           type="text"
           champ="Nom :"
-          onChange={(e) => setFirstname(e.target.value)}
-          value={firstname}
-          name="firstName"
+          onChange={(e) => handleChange(e)}
+          value={inputs.firstname}
+          name="firstname"
           placeholder="Jean"
-          required="required"
+          // onBlur={(e) => check(e.target.name)}
         />
+        <span> {inputMessage.firstname}</span>
         <Input
           forId="lastName"
           type="text"
           champ="Prénom :"
-          onChange={(e) => setLastName(e.target.value)}
-          value={lastname}
-          name="lastName"
+          onChange={(e) => handleChange(e)}
+          value={inputs.lastname}
+          name="lastname"
           placeholder="Bon"
-          required="required"
+          // onBlur={(e) => check(e.target.name)}
         />
+        <span> {inputMessage.lastname}</span>
         <Input
           forId="name"
           type="text"
           champ="Pseudo :"
-          onChange={(e) => setAlias(e.target.value)}
-          value={alias}
+          onChange={(e) => handleChange(e)}
+          value={inputs.alias}
           name="alias"
           placeholder="Babe"
-          required="required"
+          // onBlur={(e) => check(e.target.name)}
         />
+        <span> {inputMessage.alias}</span>
         <Input
           forId="mdp"
           type="password"
           champ="Mot de passe :"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-          name="mdp1"
+          onChange={(e) => handleChange(e)}
+          value={inputs.password}
+          name="password"
           autoComplete="on"
           placeholder="Mot de passe"
-          minlength={6}
-          required="required"
+          // onBlur={(e) => check(e.target.name)}
         />
+        <span> {inputMessage.password}</span>
         <Input
           forId="confMdp"
           type="password"
           champ="Confirmation :"
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          value={confirmPassword}
+          onChange={(e) => handleChange(e)}
+          value={inputs.confirmPassword}
           onBlur={() => validatePassword()}
-          name="mdp2"
+          name="confirmPassword"
           autoComplete="on"
           placeholder="Mot de passe"
-          required="required"
         />
         {passwordMessage !== null && <span> {passwordMessage}</span>}
         <Input
           forId="email"
           type="email"
           champ="Email :"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
+          onChange={(e) => handleChange(e)}
+          value={inputs.email}
           name="email"
           placeholder="jean_bon@herta.fr"
-          required="required"
+          // onBlur={(e) => check(e.target.name)}
         />
+        <span> {inputMessage.email}</span>
         <Button
           disabled={isConfirmPassword}
           idButton="btn"
+          name="button"
           champButton="Valider"
           type="submit"
-          onClick={(e) =>
-            postProfile(
-              data,
-              setFirstname,
-              setLastName,
-              setEmail,
-              setAlias,
-              setPassword,
-              e
-            )
-          }
+          onClick={(e) => {
+            sendData(e);
+          }}
         />
       </form>
     </div>

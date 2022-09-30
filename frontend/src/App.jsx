@@ -14,7 +14,7 @@ import "./App.css";
 
 function App() {
   const [aliasUser, setAliasUser] = useState([]);
-  const [userOption, setUserOption] = useState("Recherche");
+  const [userOption, setUserOption] = useState("");
 
   return (
     <UserContext.Provider value={{ aliasUser, setAliasUser }}>
@@ -28,8 +28,12 @@ function App() {
                 <Route path="/Login" element={<Login />} />
                 <Route path="/CreateCount" element={<CreateCount />} />
                 <Route path="/Accueil" element={<Accueil />} />
-                <Route path="/Login/UserChoice" element={<UserChoice />} />
-                <Route path="/MyTrips" element={<MyTrips />} />
+                <Route path="/UserChoice" element={<UserChoice />} />
+                <Route
+                  path="/MyTrips/:origin/:date/:hour"
+                  element={<MyTrips />}
+                />
+                <Route path="/MyTrips/:id" element={<MyTrips />} />
                 <Route path="/Profile" element={<Profile />} />
               </Routes>
             </div>

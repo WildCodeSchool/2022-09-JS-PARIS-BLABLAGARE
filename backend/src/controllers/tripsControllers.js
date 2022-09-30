@@ -1,21 +1,22 @@
 const { sqldb } = require("../../db");
 
 const getTrips = (req, res) => {
+  const { origin, day, hour } = req.params;
   let tripsFilter =
     "SELECT u_alias, t_id, t_search, t_origin, t_dest1, t_dest2, t_dest3, DATE_FORMAT(t_date, '%d %m %Y') AS day, t_hour, t_comments, u_email FROM trips INNER JOIN users ON users.u_id = trips.t_users_id";
   const tripsValues = [];
 
-  if (req.query.origin != null) {
+  if (origin != null) {
     tripsFilter += " WHERE t_origin = ?";
-    tripsValues.push(req.query.origin);
+    tripsValues.push(origin);
 
-    if (req.query.day != null) {
+    if (day != null) {
       tripsFilter += "AND t_date = ? ";
-      tripsValues.push(req.query.day);
+      tripsValues.push(day);
 
-      if (req.query.hour != null) {
+      if (hour != null) {
         tripsFilter += "AND t_hour >= ? ORDER BY t_hour";
-        tripsValues.push(req.query.hour);
+        tripsValues.push(hour);
       }
     }
   }
@@ -35,7 +36,7 @@ const getTripsByUser = (req, res) => {
   id = parseInt(id, 10);
   sqldb
     .query(
-      "SELECT u_alias, t_search, t_origin, t_dest1, t_dest2, t_dest3, t_date, t_hour FROM trips INNER JOIN users ON users.u_id = trips.t_users_id WHERE t_users_id = ?",
+      "SELECT u_alias, t_search, t_origin, t_dest1, t_dest2, t_dest3, DATE_FORMAT(t_date, '%d %m %Y') AS day, t_hour FROM trips INNER JOIN users ON users.u_id = trips.t_users_id WHERE t_users_id = ?",
       [id]
     )
     .then(([trips]) => {
@@ -48,13 +49,13 @@ const getTripsByUser = (req, res) => {
 
 const postTrips = (req, res) => {
   // eslint-disable-next-line camelcase
-  const { search, origin, dest1, dest2, dest3, day, hour, comments, users_id } =
+  const { search, origin, dest1, dest2, dest3, date, hour, comments, usersId } =
     req.body;
   sqldb
     .query(
       "INSERT INTO trips ( t_search, t_origin, t_dest1, t_dest2, t_dest3, t_date, t_hour, t_comments, t_users_id ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
       // eslint-disable-next-line camelcase
-      [search, origin, dest1, dest2, dest3, day, hour, comments, users_id]
+      [search, origin, dest1, dest2, dest3, date, hour, comments, usersId]
     )
     .then(([result]) => {
       res.location(`/trips/${result.insertId}`).sendStatus(201);

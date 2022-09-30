@@ -10,7 +10,7 @@ function NavBar() {
         <img src={logoSncf} className="logoSncf" alt="logoSncf" />
       </a>
       <li>
-        <Link to="/">Home</Link>
+        <Link to="/Accueil">Accueil</Link>
       </li>
       <li>
         <Link to="/Profile">Mon compte</Link>

@@ -8,8 +8,8 @@ export default function UserChoice() {
   return (
     <>
       <CardNavbar />
-      <CardBackground />
       <CardChoise />
+      <CardBackground />
     </>
   );
 }

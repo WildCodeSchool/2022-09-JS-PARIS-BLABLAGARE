@@ -18,6 +18,7 @@ export default function Input({
   required,
   min,
   max,
+  name,
 }) {
   return (
     <div className="input-container">
@@ -28,7 +29,7 @@ export default function Input({
         className={className}
         type={type}
         id={forId}
-        name={champ}
+        name={name}
         onChange={onChange}
         defaultValue={defaultValue}
         value={value}

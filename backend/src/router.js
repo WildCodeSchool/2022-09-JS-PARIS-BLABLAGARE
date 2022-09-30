@@ -34,7 +34,7 @@ router.put(
   usersControllers.updateUsers
 );
 
-router.get("/trips", tripsControllers.getTrips);
+router.get("/trips/:origin/:day/:hour", tripsControllers.getTrips);
 router.get("/trips/:id", tripsControllers.getTripsByUser);
 router.post("/trips", tripsControllers.postTrips);
 router.delete("/trips/:id", tripsControllers.deleteTripsById);
