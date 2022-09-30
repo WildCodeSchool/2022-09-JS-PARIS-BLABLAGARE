@@ -10,8 +10,8 @@ function Connexion() {
   const [alias, setAlias] = useState("");
   const [password, setPassword] = useState("");
   const [sucess, setSucess] = useState(false);
-  const {setAliasUser } = useContext(UserContext);
-  
+  const { setAliasUser } = useContext(UserContext);
+
   const postUserLogin = async (e) => {
     e.preventDefault();
 

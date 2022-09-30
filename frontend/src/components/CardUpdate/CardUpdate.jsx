@@ -49,7 +49,6 @@ export default function CardProfile() {
     setPassword("");
     setConfirmPassword("");
   };
-  
 
   function validatePassword() {
     if (password !== confirmPassword) {
