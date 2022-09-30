@@ -9,6 +9,7 @@ import CreateCount from "./pages/CreateCount/CreateCount";
 import Accueil from "./pages/Accueil/Accueil";
 import UserChoice from "./pages/UserChoice/UserChoice";
 import MyTrips from "./pages/MyTrips/MyTrips";
+import Profile from "./pages/Profile/Profile";
 import "./App.css";
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
                   element={<MyTrips />}
                 />
                 <Route path="/MyTrips/:id" element={<MyTrips />} />
+                <Route path="/Profile" element={<Profile />} />
               </Routes>
             </div>
           </Router>
