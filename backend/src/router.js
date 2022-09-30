@@ -27,7 +27,12 @@ router.post("/users/logout", killToken);
 router.use(verifyToken, isTokenKilled);
 router.get("/users/:alias", usersControllers.getUser);
 router.delete("/users/:id", usersControllers.deleteUsers);
-router.put("/users/:id", validateUser, usersControllers.updateUsers);
+router.put(
+  "/users/:id",
+  validateUser,
+  hashPassword,
+  usersControllers.updateUsers
+);
 
 router.get("/trips/:origin/:day/:hour", tripsControllers.getTrips);
 router.get("/trips/:id", tripsControllers.getTripsByUser);
