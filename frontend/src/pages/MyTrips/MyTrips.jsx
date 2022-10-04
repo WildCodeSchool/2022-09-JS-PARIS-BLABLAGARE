@@ -5,11 +5,11 @@ import Result from "../../components/CardResult/CardResult";
 import "./MyTrips.css";
 
 export default function MyTrips() {
-  const { origin, date, hour, id } = useParams();
+  const { id, origin, date, hour } = useParams();
   return (
     <>
       <Navbar />
-      <Result day={date} origin={origin} hour={hour} id={id} />
+      <Result id={id} origin={origin} day={date} hour={hour} />
       <Background />
     </>
   );

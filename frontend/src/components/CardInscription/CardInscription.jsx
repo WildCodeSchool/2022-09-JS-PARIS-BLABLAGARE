@@ -6,15 +6,15 @@ import Button from "../CardButton/CardButton";
 import Input from "../CardInput/CardInput";
 
 function Inscription() {
+  const navigate = useNavigate();
   const [passwordMessage, setPasswordMessage] = useState(null);
+  const [lenghtPassword, setLenghtPassword] = useState(null);
   const [inputMessage, setInputMessage] = useState({
     firstname: "",
     lastname: "",
     alias: "",
     email: "",
-    password: "",
   });
-  const navigate = useNavigate();
 
   const initialValues = {
     firstname: "",
@@ -36,21 +36,17 @@ function Inscription() {
   };
 
   function check() {
-    const keys = Object.keys(inputs); // Clés de inputs donc firstname, lastname, email etc..
+    const keys = Object.keys(inputs);
     const emptyInputs = {};
     keys.forEach((key) => {
       if (inputs[key] === "") {
-        emptyInputs[key] = true;
+        emptyInputs[key] = `Le champ ${key} est vide`;
       } else {
-        emptyInputs[key] = false;
+        emptyInputs[key] = null;
       }
     });
     setInputMessage({
-      firstname: emptyInputs.firstname ? `Le champ firstname est vide ` : null,
-      lastname: emptyInputs.lastname ? `Le champ lasttname est vide ` : null,
-      alias: emptyInputs.alias ? `Le champ alias est vide ` : null,
-      email: emptyInputs.email ? `Le champ email est vide ` : null,
-      password: emptyInputs.password ? `Le champ password est vide ` : null,
+      ...emptyInputs,
     });
   }
 
@@ -59,6 +55,9 @@ function Inscription() {
     const arrayValues = Object.values(inputs);
     arrayValues.forEach((el) => {
       if (el === "") {
+        canChangePage = false;
+      }
+      if (inputs.password.length < 6) {
         canChangePage = false;
       }
     });
@@ -83,6 +82,13 @@ function Inscription() {
       setPasswordMessage(null);
     }
   }
+  function minlength() {
+    if (inputs.password.length < 6) {
+      setLenghtPassword("6 caractéres minimum");
+    } else {
+      setLenghtPassword(null);
+    }
+  }
   const isConfirmPassword = inputs.password !== inputs.confirmPassword;
 
   return (
@@ -96,7 +102,6 @@ function Inscription() {
           value={inputs.firstname}
           name="firstname"
           placeholder="Jean"
-          // onBlur={(e) => check(e.target.name)}
         />
         <span> {inputMessage.firstname}</span>
         <Input
@@ -107,7 +112,6 @@ function Inscription() {
           value={inputs.lastname}
           name="lastname"
           placeholder="Bon"
-          // onBlur={(e) => check(e.target.name)}
         />
         <span> {inputMessage.lastname}</span>
         <Input
@@ -118,7 +122,6 @@ function Inscription() {
           value={inputs.alias}
           name="alias"
           placeholder="Babe"
-          // onBlur={(e) => check(e.target.name)}
         />
         <span> {inputMessage.alias}</span>
         <Input
@@ -130,9 +133,9 @@ function Inscription() {
           name="password"
           autoComplete="on"
           placeholder="Mot de passe"
-          // onBlur={(e) => check(e.target.name)}
+          onBlur={() => minlength()}
         />
-        <span> {inputMessage.password}</span>
+        {lenghtPassword !== null && <span> {lenghtPassword}</span>}
         <Input
           forId="confMdp"
           type="password"
@@ -153,7 +156,6 @@ function Inscription() {
           value={inputs.email}
           name="email"
           placeholder="jean_bon@herta.fr"
-          // onBlur={(e) => check(e.target.name)}
         />
         <span> {inputMessage.email}</span>
         <Button
