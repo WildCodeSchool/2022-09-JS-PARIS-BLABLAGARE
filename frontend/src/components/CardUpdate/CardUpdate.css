@@ -1,0 +1,18 @@
+#mdp {
+  position: absolute;
+}
+
+.eye {
+  position: relative;
+  z-index: 1;
+  left: 80px;
+  top: 7px;
+}
+
+#confMdp {
+  position: absolute;
+}
+
+img {
+  width: 22px;
+}

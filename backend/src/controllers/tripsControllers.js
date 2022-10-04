@@ -36,7 +36,7 @@ const getTripsByUser = (req, res) => {
   id = parseInt(id, 10);
   sqldb
     .query(
-      "SELECT u_alias, t_search, t_origin, t_dest1, t_dest2, t_dest3, DATE_FORMAT(t_date, '%d %m %Y') AS day, t_hour FROM trips INNER JOIN users ON users.u_id = trips.t_users_id WHERE t_users_id = ?",
+      "SELECT t_id, u_alias, t_search, t_origin, t_dest1, t_dest2, t_dest3, DATE_FORMAT(t_date, '%d %m %Y') AS day, t_hour FROM trips INNER JOIN users ON users.u_id = trips.t_users_id WHERE t_users_id = ?",
       [id]
     )
     .then(([trips]) => {

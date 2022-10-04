@@ -22,7 +22,7 @@ function Background() {
 
   return (
     <div className="background">
-      <button onClick={() => logout()}>
+      <button onClick={logout}>
         <Link to="/">Déconnecter</Link>
       </button>
       <h3>

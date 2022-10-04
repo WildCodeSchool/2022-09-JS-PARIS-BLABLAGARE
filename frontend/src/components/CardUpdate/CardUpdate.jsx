@@ -1,11 +1,14 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import UserContext from "../../Context/UserContext";
 import "./CardUpdate.css";
 import Button from "../CardButton/CardButton";
 import Input from "../CardInput/CardInput";
+import openEye from "../../assets/open-eye.svg";
+import closeEye from "../../assets/close-eye.svg";
 
-export default function CardProfile() {
+export default function CardUpdate() {
   const { aliasUser } = useContext(UserContext);
   const userId = aliasUser.u_id;
   const Firstname = aliasUser.u_firstname;
@@ -20,6 +23,8 @@ export default function CardProfile() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordMessage, setPasswordMessage] = useState(null);
+  const [passwordIsVisible, setPasswordIsVisible] = useState(false);
+  const [passwordConfIsVisible, setPasswordConfIsVisible] = useState(false);
 
   const update = async (e) => {
     e.preventDefault();
@@ -34,12 +39,28 @@ export default function CardProfile() {
     };
 
     const token = sessionStorage.getItem("token");
-
     const config = { headers: { Authorization: `Bearer ${token}` } };
+    alert("Modification effectué avec succès");
 
     const response = await axios.put(
       `http://localhost:5000/users/${userId}`,
       user,
+      config
+    );
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setAlias("");
+    setPassword("");
+    setConfirmPassword("");
+  };
+
+  const deleteUser = async () => {
+    const token = sessionStorage.getItem("token");
+    const config = { headers: { Authorization: `Bearer ${token}` } };
+
+    const res = await axios.delete(
+      `http://localhost:5000/users/${userId}`,
       config
     );
     setFirstName("");
@@ -95,7 +116,7 @@ export default function CardProfile() {
         />
         <Input
           forId="mdp"
-          type="password"
+          type={passwordIsVisible ? "text" : "password"}
           champ="Mot de passe :"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
@@ -105,9 +126,21 @@ export default function CardProfile() {
           minlength={6}
           required="required"
         />
+        <span
+          onClick={() => setPasswordIsVisible(!passwordIsVisible)}
+          onKeyDown={() => setPasswordIsVisible(!passwordIsVisible)}
+          role="button"
+          aria-hidden="true"
+          className="eye"
+        >
+          <img
+            src={passwordIsVisible ? openEye : closeEye}
+            alt={passwordIsVisible ? "Open Eye" : "Close Eye"}
+          />
+        </span>
         <Input
           forId="confMdp"
-          type="password"
+          type={passwordConfIsVisible ? "text" : "password"}
           champ="Confirmation :"
           onChange={(e) => setConfirmPassword(e.target.value)}
           value={confirmPassword}
@@ -117,6 +150,18 @@ export default function CardProfile() {
           placeholder="Mot de passe"
           required="required"
         />
+        <span
+          onClick={() => setPasswordConfIsVisible(!passwordConfIsVisible)}
+          onKeyDown={() => setPasswordConfIsVisible(!passwordConfIsVisible)}
+          role="button"
+          aria-hidden="true"
+          className="eye"
+        >
+          <img
+            src={passwordConfIsVisible ? openEye : closeEye}
+            alt={passwordConfIsVisible ? "Open Eye" : "Close Eye"}
+          />
+        </span>
         {passwordMessage !== null && <span> {passwordMessage}</span>}
         <Input
           forId="email"
@@ -135,6 +180,10 @@ export default function CardProfile() {
           type="submit"
           onClick={update}
         />
+
+        <button idButton="btnD" onClick={deleteUser}>
+          <Link to="/">Supprimer</Link>
+        </button>
       </form>
     </div>
   );
