@@ -48,8 +48,6 @@ function Proposition() {
 
         <label htmlFor="gare-select">Depuis la gare de:</label>
 
-        {console.warn("Search", search)}
-
         <select
           name="gare"
           id="dep"
