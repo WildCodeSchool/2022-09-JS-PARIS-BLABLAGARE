@@ -6,7 +6,9 @@ import Button from "../CardButton/CardButton";
 import Input from "../CardInput/CardInput";
 
 function Inscription() {
+  const navigate = useNavigate();
   const [passwordMessage, setPasswordMessage] = useState(null);
+  const [lenghtPassword, setLenghtPassword] = useState(null);
   const [inputMessage, setInputMessage] = useState({
     firstname: "",
     lastname: "",
@@ -14,7 +16,6 @@ function Inscription() {
     email: "",
     password: "",
   });
-  const navigate = useNavigate();
 
   const initialValues = {
     firstname: "",
@@ -57,6 +58,9 @@ function Inscription() {
       if (el === "") {
         canChangePage = false;
       }
+      if (inputs.password.length < 6) {
+        canChangePage = false;
+      }
     });
     return canChangePage;
   }
@@ -79,6 +83,13 @@ function Inscription() {
       setPasswordMessage(null);
     }
   }
+  function minlength() {
+    if (inputs.password.length < 6) {
+      setLenghtPassword("6 caractéres minimum");
+    } else {
+      setLenghtPassword(null);
+    }
+  }
   const isConfirmPassword = inputs.password !== inputs.confirmPassword;
 
   return (
@@ -92,7 +103,6 @@ function Inscription() {
           value={inputs.firstname}
           name="firstname"
           placeholder="Jean"
-          // onBlur={(e) => check(e.target.name)}
         />
         <span> {inputMessage.firstname}</span>
         <Input
@@ -103,7 +113,6 @@ function Inscription() {
           value={inputs.lastname}
           name="lastname"
           placeholder="Bon"
-          // onBlur={(e) => check(e.target.name)}
         />
         <span> {inputMessage.lastname}</span>
         <Input
@@ -114,7 +123,6 @@ function Inscription() {
           value={inputs.alias}
           name="alias"
           placeholder="Babe"
-          // onBlur={(e) => check(e.target.name)}
         />
         <span> {inputMessage.alias}</span>
         <Input
@@ -126,9 +134,10 @@ function Inscription() {
           name="password"
           autoComplete="on"
           placeholder="Mot de passe"
-          // onBlur={(e) => check(e.target.name)}
+          onBlur={() => minlength()}
         />
         <span> {inputMessage.password}</span>
+        {lenghtPassword !== null && <span> {lenghtPassword}</span>}
         <Input
           forId="confMdp"
           type="password"
@@ -149,7 +158,6 @@ function Inscription() {
           value={inputs.email}
           name="email"
           placeholder="jean_bon@herta.fr"
-          // onBlur={(e) => check(e.target.name)}
         />
         <span> {inputMessage.email}</span>
         <Button
