@@ -28,9 +28,9 @@ function App() {
                 <Route path="/Login" element={<Login />} />
                 <Route path="/CreateCount" element={<CreateCount />} />
                 <Route path="/Accueil" element={<Accueil />} />
-                <Route path="/UserChoice" element={<UserChoice />} />
+                <Route path="/UserChoice/:id" element={<UserChoice />} />
                 <Route
-                  path="/MyTrips/:origin/:date/:hour"
+                  path="/MyTrips/:id/:origin/:date/:hour"
                   element={<MyTrips />}
                 />
                 <Route path="/MyTrips/:id" element={<MyTrips />} />

@@ -48,8 +48,6 @@ function Proposition() {
 
         <label htmlFor="gare-select">Depuis la gare de:</label>
 
-        {console.warn("Search", search)}
-
         <select
           name="gare"
           id="dep"
@@ -124,7 +122,7 @@ function Proposition() {
           switch (userOption) {
             case "recherche":
               return (
-                <Link to={`/Mytrips/${origin}/${date}/${hour}`}>
+                <Link to={`/Mytrips/${usersId}/${origin}/${date}/${hour}`}>
                   <Button
                     idButton="btn"
                     type="submit"

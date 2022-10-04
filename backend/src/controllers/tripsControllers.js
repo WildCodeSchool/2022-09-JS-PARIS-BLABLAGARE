@@ -1,22 +1,26 @@
 const { sqldb } = require("../../db");
 
 const getTrips = (req, res) => {
-  const { origin, day, hour } = req.params;
+  const { id, origin, day, hour } = req.params;
   let tripsFilter =
-    "SELECT u_alias, t_id, t_search, t_origin, t_dest1, t_dest2, t_dest3, DATE_FORMAT(t_date, '%d %m %Y') AS day, t_hour, t_comments, u_email FROM trips INNER JOIN users ON users.u_id = trips.t_users_id";
+    "SELECT u_alias, t_id, t_search, t_origin, t_dest1, t_dest2, t_dest3, DATE_FORMAT(t_date, '%d %m %Y') AS day, t_hour, t_comments, u_email, u_id FROM trips INNER JOIN users ON users.u_id = trips.t_users_id";
   const tripsValues = [];
+  if (id != null) {
+    tripsFilter += " WHERE u_id != ?";
+    tripsValues.push(id);
 
-  if (origin != null) {
-    tripsFilter += " WHERE t_origin = ?";
-    tripsValues.push(origin);
+    if (origin != null) {
+      tripsFilter += " AND t_origin = ?";
+      tripsValues.push(origin);
 
-    if (day != null) {
-      tripsFilter += "AND t_date = ? ";
-      tripsValues.push(day);
+      if (day != null) {
+        tripsFilter += " AND t_date = ? ";
+        tripsValues.push(day);
 
-      if (hour != null) {
-        tripsFilter += "AND t_hour >= ? ORDER BY t_hour";
-        tripsValues.push(hour);
+        if (hour != null) {
+          tripsFilter += "AND t_hour >= ? ORDER BY t_hour";
+          tripsValues.push(hour);
+        }
       }
     }
   }

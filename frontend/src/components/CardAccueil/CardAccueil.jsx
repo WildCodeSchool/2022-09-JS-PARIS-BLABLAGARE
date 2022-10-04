@@ -16,7 +16,7 @@ export default function CardAccueil() {
       <ul>
         <li>
           <Link
-            to="/UserChoice"
+            to={`/UserChoice/${userId}`}
             onClick={() => {
               setUserOption("proposition");
             }}
@@ -26,7 +26,7 @@ export default function CardAccueil() {
         </li>
         <li>
           <Link
-            to="/UserChoice"
+            to={`/UserChoice/${userId}`}
             onClick={() => {
               setUserOption("recherche");
             }}
