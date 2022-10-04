@@ -14,7 +14,6 @@ function Inscription() {
     lastname: "",
     alias: "",
     email: "",
-    password: "",
   });
 
   const initialValues = {
@@ -136,7 +135,6 @@ function Inscription() {
           placeholder="Mot de passe"
           onBlur={() => minlength()}
         />
-        <span> {inputMessage.password}</span>
         {lenghtPassword !== null && <span> {lenghtPassword}</span>}
         <Input
           forId="confMdp"
