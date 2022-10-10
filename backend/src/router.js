@@ -13,6 +13,7 @@ const {
 
 const usersControllers = require("./controllers/usersControllers");
 const tripsControllers = require("./controllers/tripsControllers");
+const mailControllers = require("./controllers/mailControllers");
 
 router.get("/users", usersControllers.getUsers);
 
@@ -38,5 +39,6 @@ router.get("/trips/:id/:origin/:day/:hour", tripsControllers.getTrips);
 router.get("/trips/:id", tripsControllers.getTripsByUser);
 router.post("/trips", tripsControllers.postTrips);
 router.delete("/trips/:id", tripsControllers.deleteTripsById);
+router.post("/send", mailControllers.mail);
 
 module.exports = router;

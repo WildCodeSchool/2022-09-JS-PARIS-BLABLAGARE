@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Button from "../CardButton/CardButton";
 import UserOptionContext from "../../Context/UserOptionContext";
+import UserContext from "../../Context/UserContext";
+
 import "./CardResult.css";
 
 function Result({ id, origin, day, hour }) {
   const token = sessionStorage.getItem("token");
   const { userOption } = useContext(UserOptionContext);
+  const { aliasUser } = useContext(UserContext);
   const [resultTrips, setResultTrips] = useState([]);
 
   const url = () => {
@@ -47,6 +50,19 @@ function Result({ id, origin, day, hour }) {
       .then(() => setResultTrips);
   };
 
+  const sendMail = async (mail) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    await axios.post(
+      `http://localhost:5000/send`,
+      { senderEmail: aliasUser.u_email, receiverEmail: mail },
+      config
+    );
+  };
+
   return (
     <div className="result-container">
       <div className="result-block1">
@@ -70,7 +86,7 @@ function Result({ id, origin, day, hour }) {
                     }
                     onClick={
                       userOption === "recherche"
-                        ? "Contacter"
+                        ? () => sendMail(data.u_email)
                         : () => deleteTrips(data.t_id)
                     }
                   />
@@ -104,7 +120,7 @@ function Result({ id, origin, day, hour }) {
                     }
                     onClick={
                       userOption === "recherche"
-                        ? "Contacter"
+                        ? () => sendMail(data.u_email)
                         : () => deleteTrips(data.t_id)
                     }
                   />
