@@ -37,12 +37,6 @@
   font-size: 21px;
 }
 
-#btn:hover {
-  transform: translateY(2px);
-}
-#btn:active {
-  transform: translateY(3px);
-}
 .covoit2 {
   display: none;
 }

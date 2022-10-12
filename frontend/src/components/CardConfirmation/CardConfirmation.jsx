@@ -21,7 +21,7 @@ export default function Confirmation() {
             return (
               <>
                 <p className="text-conf">Message envoyé.</p>{" "}
-                <p>Merci {aliasUser.u_alias} !</p>{" "}
+                <p className="text-conf">Merci {aliasUser.u_alias} !</p>{" "}
               </>
             );
           case "suppresion":
