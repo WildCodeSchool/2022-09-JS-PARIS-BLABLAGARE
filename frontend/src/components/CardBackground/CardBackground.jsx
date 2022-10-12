@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./CardBackground.css";
 import logo from "../../assets/logo.png";
 
-function Background() {
+function Background({ deconnect }) {
   const logout = () => {
     // e.preventDefault();
     const token = sessionStorage.getItem("token");
@@ -23,7 +23,7 @@ function Background() {
   return (
     <div className="background">
       <button className="disconnect" onClick={logout}>
-        <Link className="disconnect-link" to="/">
+        <Link className={`disconnect-link ${deconnect}`} to="/">
           Déconnecter
         </Link>
       </button>

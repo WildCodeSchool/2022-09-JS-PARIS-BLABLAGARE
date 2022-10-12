@@ -37,8 +37,9 @@ function Connexion() {
   };
   return (
     <div className="connexion">
-      <form>
+      <form className="form-input ">
         <Input
+          className="input-login"
           forId="name"
           type="text"
           champ="Pseudo :"
@@ -48,6 +49,7 @@ function Connexion() {
           placeholder="Babe"
         />
         <Input
+          className="input-login"
           forId="pass"
           type="password"
           champ="Mot de passe :"
@@ -59,6 +61,7 @@ function Connexion() {
         />
 
         <Button
+          classButton="btn-login"
           idButton="btn"
           champButton="Valider"
           type="submit"

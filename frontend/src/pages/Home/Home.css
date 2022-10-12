@@ -1,5 +1,5 @@
 .imgcovoit {
-  height: 40vh;
+  height: 38vh;
   width: 100vw;
 }
 
@@ -14,8 +14,8 @@
   color: white;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 10vh;
-  margin-top: 10vh;
+  margin-bottom: 5vh;
+  margin-top: 5vh;
   font-size: 22px;
 }
 
@@ -28,8 +28,52 @@
   display: flex;
   margin: 10px;
 }
-.accueil,
-.profile,
-.disconnect-link {
+.acc-home,
+.compte-home,
+.deco-home {
   display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .list-creat-log {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container-home {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin-right: 15px;
+    margin-left: 15px;
+    height: 68vh;
+  }
+  .imgcovoit {
+    width: 55vw;
+    height: 60vh;
+    margin-left: 15px;
+    border-radius: 20px;
+    margin-right: 4px;
+  }
+  .home {
+    width: 40vw;
+    height: 30vh;
+  }
+  .li-home {
+    margin-bottom: 2vh;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .covoit {
+    display: none;
+  }
+  .container-home {
+    background-image: url(../../assets/covoit1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 0px;
+    margin-left: 0px;
+    height: 70vh;
+  }
 }

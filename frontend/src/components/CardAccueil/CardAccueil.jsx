@@ -13,9 +13,10 @@ export default function CardAccueil() {
     <div className="user">
       <h3 className="welcome">Bienvenue {aliasUser.u_alias} !</h3>
 
-      <ul>
-        <li>
+      <ul className="list-accueil">
+        <li className="li-accueil">
           <Link
+            className="link-accueil"
             to={`/UserChoice/${userId}`}
             onClick={() => {
               setUserOption("proposition");
@@ -24,8 +25,9 @@ export default function CardAccueil() {
             Je propose un acheminement
           </Link>
         </li>
-        <li>
+        <li className="li-accueil">
           <Link
+            className="link-accueil"
             to={`/UserChoice/${userId}`}
             onClick={() => {
               setUserOption("recherche");
@@ -34,8 +36,9 @@ export default function CardAccueil() {
             Je recherche un acheminement
           </Link>
         </li>
-        <li>
+        <li className="li-accueil">
           <Link
+            className="link-accueil"
             to={`/MyTrips/${userId}`}
             onClick={() => {
               setUserOption("suppresion");

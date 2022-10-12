@@ -1,0 +1,101 @@
+.result-container {
+  display: flex;
+  flex-direction: column;
+  padding: 3vh;
+  line-height: 1.25em;
+}
+
+.result-block1 {
+  color: white;
+  background-color: #bbc95d;
+  border-radius: 25px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.result-block2 {
+  color: white;
+  background-color: #f5d033;
+  margin-top: 20px;
+  border-radius: 25px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.resultOffres {
+  margin-top: 1.25vh;
+  background-color: rgba(253, 251, 252, 0.4);
+  border-radius: 25px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  padding: 10px;
+}
+.resultSearch {
+  margin-top: 1.25vh;
+  background-color: rgba(253, 251, 252, 0.4);
+  border-radius: 25px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  padding: 10px;
+}
+.Btn-trips-offre,
+.Btn-trips-search {
+  border: none;
+  cursor: pointer;
+  color: white;
+  margin-top: 1vh;
+  font-size: 18px;
+  background-color: rgb(253 251 252 / 0%);
+}
+
+.fond {
+  min-height: 70vh;
+}
+@media (min-width: 768px) {
+  .result-container {
+    font-size: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .result-container {
+    display: flex;
+    flex-direction: row;
+  }
+  .result-block1 {
+    margin-right: 2.5vw;
+    width: 45vw;
+  }
+  .result-block2 {
+    margin-top: 0px;
+    width: 45vw;
+  }
+  .titre {
+    margin-bottom: 1vh;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .fond {
+    background-image: url(../../assets/covoit1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .resultOffres {
+    background-color: #bbc95d;
+  }
+  .resultSearch {
+    background-color: #f5d033;
+  }
+  .result-block1 {
+    background-color: #bbc95d7d;
+    padding: 5px;
+  }
+  .result-block2 {
+    background-color: #f5d0337d;
+  }
+}

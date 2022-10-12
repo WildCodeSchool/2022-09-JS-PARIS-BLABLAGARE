@@ -6,7 +6,7 @@ function HomeComp() {
   return (
     <div className="home">
       <ul className="creat-log">
-        <li>
+        <li className="li-home">
           <Link to="/CreateCount" className="list-creat-log">
             Créer un compte
           </Link>
