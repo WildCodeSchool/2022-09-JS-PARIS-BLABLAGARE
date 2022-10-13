@@ -106,7 +106,6 @@ function Proposition() {
             min="00:00"
             max="23:59"
             onChange={(e) => setHour(e.target.value)}
-            required
           />
         </div>
 

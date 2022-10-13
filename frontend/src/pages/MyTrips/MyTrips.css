@@ -93,9 +93,13 @@
   }
   .result-block1 {
     background-color: #bbc95d7d;
-    padding: 5px;
   }
   .result-block2 {
     background-color: #f5d0337d;
+  }
+}
+@media (min-width: 1920px) {
+  .result-container {
+    font-size: 2.1rem;
   }
 }

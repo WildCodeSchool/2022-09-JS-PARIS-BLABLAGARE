@@ -10,8 +10,8 @@ export default function Input({
   value,
   onClick,
   placeholder,
-  minlength,
-  maxlength,
+  minLength,
+  maxLength,
   className,
   autoComplete,
   onBlur,
@@ -35,8 +35,8 @@ export default function Input({
         value={value}
         onClick={onClick}
         placeholder={placeholder}
-        minLength={minlength}
-        maxLength={maxlength}
+        minLength={minLength}
+        maxLength={maxLength}
         autoComplete={autoComplete}
         onBlur={onBlur}
         required={required}

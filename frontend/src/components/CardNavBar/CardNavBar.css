@@ -18,7 +18,7 @@
 }
 
 .logoSncf {
-  height: 10vh;
+  height: 8vh;
 }
 
 .accueil {
@@ -28,5 +28,11 @@
 @media screen and (min-width: 768px) {
   .link-navbar {
     font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1040px) {
+  .logoSncf {
+    height: 9vh;
   }
 }

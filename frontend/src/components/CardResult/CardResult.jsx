@@ -76,7 +76,7 @@ function Result({ id, origin, day, hour }) {
                   <p>
                     {data.u_alias} propose le {data.day} à {data.t_hour} depuis{" "}
                     {data.t_origin} vers {data.t_dest1} {data.t_dest2}{" "}
-                    {data.t_dest3}. <br /> {data.t_comments}
+                    {data.t_dest3} <br /> {data.t_comments}
                   </p>
                   <Link to="/ValidateTrips">
                     <Button
@@ -111,7 +111,7 @@ function Result({ id, origin, day, hour }) {
                   <p>
                     {data.u_alias} recherche le {data.day} à {data.t_hour}{" "}
                     depuis {data.t_origin} vers {data.t_dest1} {data.t_dest2}{" "}
-                    {data.t_dest3}. <br /> {data.t_comments}
+                    {data.t_dest3} <br /> {data.t_comments}
                   </p>
                   <Link to="/ValidateTrips">
                     <Button
