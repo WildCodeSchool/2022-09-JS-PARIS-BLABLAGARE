@@ -39,7 +39,6 @@ export default function CardUpdate() {
 
     const token = sessionStorage.getItem("token");
     const config = { headers: { Authorization: `Bearer ${token}` } };
-    alert("Modification effectué avec succès");
 
     await axios.put(`http://localhost:5000/users/${userId}`, user, config);
     setFirstName("");
@@ -48,6 +47,7 @@ export default function CardUpdate() {
     setAlias("");
     setPassword("");
     setConfirmPassword("");
+    alert("Modification effectué avec succès");
   };
 
   const deleteUser = async () => {
@@ -75,7 +75,7 @@ export default function CardUpdate() {
 
   return (
     <div className="inscription">
-      <form>
+      <form className="input-inscription">
         <Input
           forId="firstName"
           type="text"
@@ -123,9 +123,9 @@ export default function CardUpdate() {
           onKeyDown={() => setPasswordIsVisible(!passwordIsVisible)}
           role="button"
           aria-hidden="true"
-          className="eye"
         >
           <img
+            className="eye"
             src={passwordIsVisible ? openEye : closeEye}
             alt={passwordIsVisible ? "Open Eye" : "Close Eye"}
           />
@@ -147,9 +147,9 @@ export default function CardUpdate() {
           onKeyDown={() => setPasswordConfIsVisible(!passwordConfIsVisible)}
           role="button"
           aria-hidden="true"
-          className="eye"
         >
           <img
+            className="eye"
             src={passwordConfIsVisible ? openEye : closeEye}
             alt={passwordConfIsVisible ? "Open Eye" : "Close Eye"}
           />
@@ -165,17 +165,28 @@ export default function CardUpdate() {
           placeholder="jean_bon@herta.fr"
           required="required"
         />
-        <Button
-          disabled={isConfirmPassword}
-          idButton="btn"
-          champButton="Valider"
-          type="submit"
-          onClick={update}
-        />
 
-        <button idButton="btnD" onClick={deleteUser}>
-          <Link to="/">Supprimer</Link>
-        </button>
+        <div className="upd-del">
+          <Button
+            disabled={isConfirmPassword}
+            idButton="btn"
+            classButton="btnUpdate"
+            champButton="Modifer"
+            type="submit"
+            value="Modifier"
+            onClick={update}
+          />
+          <Link to="/">
+            <Button
+              idButton="btn"
+              classButton="btnDelete"
+              champButton="Supprimer"
+              type="submit"
+              value="Supprimer"
+              onClick={deleteUser}
+            />
+          </Link>
+        </div>
       </form>
     </div>
   );

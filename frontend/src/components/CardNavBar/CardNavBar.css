@@ -29,10 +29,10 @@
   .link-navbar {
     font-size: 1.5rem;
   }
-}
 
-@media screen and (min-width: 1040px) {
-  .logoSncf {
-    height: 9vh;
+  @media screen and (min-width: 1024px) {
+    .logoSncf {
+      height: 9vh;
+    }
   }
 }
