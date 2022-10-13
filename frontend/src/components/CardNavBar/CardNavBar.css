@@ -1,5 +1,5 @@
 .navbar {
-  height: 10vh;
+  height: 15vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -11,10 +11,28 @@
   margin-right: 15px;
 }
 
+.link-navbar {
+  color: #0088ce;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
 .logoSncf {
-  height: 65px;
+  height: 8vh;
 }
 
 .accueil {
   margin-right: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .link-navbar {
+    font-size: 1.5rem;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .logoSncf {
+      height: 9vh;
+    }
+  }
 }

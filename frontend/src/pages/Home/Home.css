@@ -28,8 +28,3 @@
   display: flex;
   margin: 10px;
 }
-.accueil,
-.profile,
-.disconnect-link {
-  display: none;
-}
