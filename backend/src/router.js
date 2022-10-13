@@ -13,11 +13,12 @@ const {
 
 const usersControllers = require("./controllers/usersControllers");
 const tripsControllers = require("./controllers/tripsControllers");
-const mailControllers = require("./controllers/mailControllers");
+const { mail, forgotPassword } = require("./controllers/mailControllers");
 
 router.get("/users", usersControllers.getUsers);
 
 router.post("/users", validateUser, hashPassword, usersControllers.postUsers);
+router.put("/forgotPassword/:alias", forgotPassword);
 router.post(
   "/users/login",
   usersControllers.getUserByAliasWithPasswordAndPassToNext,
@@ -34,11 +35,12 @@ router.put(
   hashPassword,
   usersControllers.updateUsers
 );
+router.put("/users", hashPassword, usersControllers.updateUsersPassword);
 
 router.get("/trips/:id/:origin/:day/:hour", tripsControllers.getTrips);
 router.get("/trips/:id", tripsControllers.getTripsByUser);
 router.post("/trips", tripsControllers.postTrips);
 router.delete("/trips/:id", tripsControllers.deleteTripsById);
-router.post("/send", mailControllers.mail);
+router.post("/send", mail);
 
 module.exports = router;
