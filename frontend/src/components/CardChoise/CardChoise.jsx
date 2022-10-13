@@ -34,38 +34,44 @@ function Proposition() {
   return (
     <div className="propositions">
       <div className="text">
-        <h3> {aliasUser.u_alias} </h3>
-        {(() => {
-          switch (userOption) {
-            case "proposition":
-              return <h4>Acheminement proposé :</h4>;
-            case "recherche":
-              return <h4>Acheminement recherché :</h4>;
-            default:
-              return null;
-          }
-        })()}
+        <div className="propo-choise">
+          <h3 className="alias"> Bienvenue {aliasUser.u_alias} !</h3>
+          {(() => {
+            switch (userOption) {
+              case "proposition":
+                return <h4 className="propo-search">Acheminement proposé :</h4>;
+              case "recherche":
+                return (
+                  <h4 className="propo-search">Acheminement recherché :</h4>
+                );
+              default:
+                return null;
+            }
+          })()}
+        </div>
+        <div className="gare-select">
+          <label htmlFor="gare-select">Depuis la gare de:</label>
 
-        <label htmlFor="gare-select">Depuis la gare de:</label>
-
-        <select
-          name="gare"
-          id="dep"
-          onChange={(e) => setOrigin(e.target.value)}
-        >
-          <option value="">Gare de:</option>
-          <option value="Nantes">Nantes</option>
-          <option value="Brest">Brest</option>
-          <option value="Strasbourg">Strasbourg</option>
-          <option value="Mulhouse">Mulhouse</option>
-          <option value="Metz">Metz</option>
-          <option value="Perpignan">Perpignan</option>
-          <option value="Frejus">Frejus</option>
-          <option value="Vierzon">Vierzon</option>
-          <option value="Bayonne">Bayonne</option>
-        </select>
+          <select
+            name="gare"
+            id="dep"
+            onChange={(e) => setOrigin(e.target.value)}
+          >
+            <option value="">Gare de:</option>
+            <option value="Nantes">Nantes</option>
+            <option value="Brest">Brest</option>
+            <option value="Strasbourg">Strasbourg</option>
+            <option value="Mulhouse">Mulhouse</option>
+            <option value="Metz">Metz</option>
+            <option value="Perpignan">Perpignan</option>
+            <option value="Frejus">Frejus</option>
+            <option value="Vierzon">Vierzon</option>
+            <option value="Bayonne">Bayonne</option>
+          </select>
+        </div>
 
         <Input
+          className="input-choise"
           champ="Jusqu'à :"
           forId="arr1"
           type="text"
@@ -74,6 +80,7 @@ function Proposition() {
           onChange={(e) => setDest1(e.target.value)}
         />
         <Input
+          className="input-choise"
           forId="arr2"
           type="text"
           name="name"
@@ -81,6 +88,7 @@ function Proposition() {
           onChange={(e) => setDest2(e.target.value)}
         />
         <Input
+          className="input-choise"
           forId="arr3"
           type="text"
           name="name"

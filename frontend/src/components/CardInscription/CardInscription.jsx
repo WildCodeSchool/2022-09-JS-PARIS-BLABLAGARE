@@ -93,7 +93,7 @@ function Inscription() {
 
   return (
     <div className="inscription">
-      <form>
+      <form className="input-inscription">
         <Input
           forId="firstName"
           type="text"
@@ -103,7 +103,7 @@ function Inscription() {
           name="firstname"
           placeholder="Jean"
         />
-        <span> {inputMessage.firstname}</span>
+        <span className="message-input"> {inputMessage.firstname}</span>
         <Input
           forId="lastName"
           type="text"
@@ -113,7 +113,7 @@ function Inscription() {
           name="lastname"
           placeholder="Bon"
         />
-        <span> {inputMessage.lastname}</span>
+        <span className="message-input"> {inputMessage.lastname}</span>
         <Input
           forId="name"
           type="text"
@@ -123,7 +123,7 @@ function Inscription() {
           name="alias"
           placeholder="Babe"
         />
-        <span> {inputMessage.alias}</span>
+        <span className="message-input"> {inputMessage.alias}</span>
         <Input
           forId="mdp"
           type="password"
@@ -135,7 +135,9 @@ function Inscription() {
           placeholder="Mot de passe"
           onBlur={() => minlength()}
         />
-        {lenghtPassword !== null && <span> {lenghtPassword}</span>}
+        {lenghtPassword !== null && (
+          <span className="message-input"> {lenghtPassword}</span>
+        )}
         <Input
           forId="confMdp"
           type="password"
@@ -147,7 +149,9 @@ function Inscription() {
           autoComplete="on"
           placeholder="Mot de passe"
         />
-        {passwordMessage !== null && <span> {passwordMessage}</span>}
+        {passwordMessage !== null && (
+          <span className="message-input"> {passwordMessage}</span>
+        )}
         <Input
           forId="email"
           type="email"
@@ -157,10 +161,11 @@ function Inscription() {
           name="email"
           placeholder="jean_bon@herta.fr"
         />
-        <span> {inputMessage.email}</span>
+        <span className="message-input"> {inputMessage.email}</span>
         <Button
           disabled={isConfirmPassword}
           idButton="btn"
+          classButton="button-inscription"
           name="button"
           champButton="Valider"
           type="submit"

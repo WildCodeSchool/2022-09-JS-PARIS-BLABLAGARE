@@ -1,4 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
+@font-face {
+  font-family: "Avenir book";
+  src: url("../../assets/fonts/avenir/AvenirLTStd-Book.otf") format("opentype");
 }

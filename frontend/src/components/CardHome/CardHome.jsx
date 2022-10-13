@@ -5,9 +5,17 @@ import "./CardHome.css";
 function HomeComp() {
   return (
     <div className="home">
-      <ul>
-        <Link to="/CreateCount">Créer un compte</Link>
-        <Link to="/Login">Connexion</Link>
+      <ul className="creat-log">
+        <li>
+          <Link to="/CreateCount" className="list-creat-log">
+            Créer un compte
+          </Link>
+        </li>
+        <li>
+          <Link to="/Login" className="list-creat-log">
+            Connexion
+          </Link>
+        </li>
       </ul>
     </div>
   );

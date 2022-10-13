@@ -1,18 +1,30 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
 .imgcovoit {
-  width: 100vw;
   height: 40vh;
-  align-items: center;
+  width: 100vw;
 }
 
-/* @media screen and (min-width: 768px) {
-  
-    } /
-  
-  / @media screen and (min-width: 1024px) {
-  
-      } */
+.home {
+  height: 20vh;
+  width: 80vw;
+  background-color: #0088ce;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10vh;
+  margin-top: 10vh;
+  font-size: 22px;
+}
+
+.creat-log {
+  display: flex;
+  flex-direction: column;
+}
+.list-creat-log {
+  color: white;
+  display: flex;
+  margin: 10px;
+}

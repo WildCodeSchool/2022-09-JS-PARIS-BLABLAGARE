@@ -11,7 +11,7 @@ export default function CardAccueil() {
 
   return (
     <div className="user">
-      <h3>Bienvenue {aliasUser.u_alias} !</h3>
+      <h3 className="welcome">Bienvenue {aliasUser.u_alias} !</h3>
 
       <ul>
         <li>

@@ -22,13 +22,11 @@ function Background() {
 
   return (
     <div className="background">
-      <button onClick={logout}>
-        <Link to="/">Déconnecter</Link>
+      <button className="disconnect" onClick={logout}>
+        <Link className="disconnect-link" to="/">
+          Déconnecter
+        </Link>
       </button>
-      <h3>
-        Sans la sncf, <br />
-        c'est toujours possible !
-      </h3>
       <img src={logo} alt="logo" className="logo" />
     </div>
   );

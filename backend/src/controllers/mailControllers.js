@@ -21,10 +21,10 @@ function mail(req) {
 
   try {
     transporter.sendMail({
-      from: "blablagare <blablagare@outlook.fr>", // sender address
-      to: receiverEmail, // list of receivers   receiverEmail
-      subject: "It's a good message for you✔", // Subject line
-      text: "Hello world?", // plain text body
+      from: "blablagare <blablagare@outlook.fr>",
+      to: receiverEmail,
+      subject: "It's a good message for you✔",
+      text: "Hello world?",
       html: `<b>Quelqu'un est interessé par ton trajet tu peux le contacter a ce mail ${senderEmail} </b>`, // html body
     });
   } catch (error) {
