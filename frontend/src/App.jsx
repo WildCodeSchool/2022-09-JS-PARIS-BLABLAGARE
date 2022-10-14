@@ -10,6 +10,7 @@ import Accueil from "./pages/Accueil/Accueil";
 import UserChoice from "./pages/UserChoice/UserChoice";
 import MyTrips from "./pages/MyTrips/MyTrips";
 import Profile from "./pages/Profile/Profile";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import "./App.css";
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
                 />
                 <Route path="/MyTrips/:id" element={<MyTrips />} />
                 <Route path="/Profile" element={<Profile />} />
+                <Route path="/ResetPassword" element={<ResetPassword />} />
               </Routes>
             </div>
           </Router>

@@ -75,6 +75,28 @@ const updateUsers = (req, res) => {
       });
     });
 };
+const updateUsersPassword = (req, res) => {
+  const alias = req.payload.sub;
+  const { hashedPassword } = req.body;
+  sqldb
+    .query(
+      "UPDATE users SET u_hashedPassword =? WHERE u_alias =?",
+      // eslint-disable-next-line no-undef
+      [hashedPassword, alias]
+    )
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.status(404).send("Not Found");
+      } else {
+        res.status(201).json({ message: `task ${alias} was updated` });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        message: `task ${alias} was not updated because : ${err}`,
+      });
+    });
+};
 
 const getUserByAliasWithPasswordAndPassToNext = (req, res, next) => {
   const { alias } = req.body;
@@ -102,5 +124,6 @@ module.exports = {
   postUsers,
   deleteUsers,
   updateUsers,
+  updateUsersPassword,
   getUserByAliasWithPasswordAndPassToNext,
 };
