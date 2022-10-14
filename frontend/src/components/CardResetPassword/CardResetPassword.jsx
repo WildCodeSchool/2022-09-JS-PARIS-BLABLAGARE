@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import UserContext from "../../Context/UserContext";
 import Button from "../CardButton/CardButton";
 import Input from "../CardInput/CardInput";
@@ -67,7 +67,7 @@ function CardResetPassword() {
     <div className="resetPassword">
       <form>
         <Input
-          forId="mdp"
+          className="input-mdp-reset label-mdp"
           type={passwordIsVisible ? "text" : "password"}
           champ="Mot de passe :"
           onChange={(e) => setPassword(e.target.value)}
@@ -91,7 +91,7 @@ function CardResetPassword() {
           />
         </span>
         <Input
-          forId="confMdp"
+          className="input-mdp-reset label-conf"
           type={passwordConfIsVisible ? "text" : "password"}
           champ="Confirmation :"
           onChange={(e) => setConfirmPassword(e.target.value)}
@@ -118,7 +118,7 @@ function CardResetPassword() {
 
         <Button
           disabled={isConfirmPassword}
-          idButton="btn"
+          classButton="btn-resete"
           champButton="Valider"
           type="submit"
           onClick={resetPassword}

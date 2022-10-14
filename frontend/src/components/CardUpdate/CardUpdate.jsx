@@ -154,7 +154,9 @@ export default function CardUpdate() {
             alt={passwordConfIsVisible ? "Open Eye" : "Close Eye"}
           />
         </span>
-        {passwordMessage !== null && <span> {passwordMessage}</span>}
+        {passwordMessage !== null && (
+          <span className="span-mdp-diff"> {passwordMessage}</span>
+        )}
         <Input
           forId="email"
           type="email"

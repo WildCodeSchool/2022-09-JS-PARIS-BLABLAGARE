@@ -74,6 +74,11 @@
   background-color: #0088ce;
   color: white;
 }
+.span-mdp-diff {
+  color: red;
+  font-weight: bold;
+  font-size: 1rem;
+}
 
 @media screen and (min-width: 768px) {
   .imgcovoit-profile {

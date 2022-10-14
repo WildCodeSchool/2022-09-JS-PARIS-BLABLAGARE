@@ -64,19 +64,19 @@ function Connexion() {
           autoComplete="on"
           placeholder="Mot de passe"
         />
-
+        <Button
+          classButton="btn-reset"
+          idButton="btn"
+          champButton="Mot de passe oublié"
+          type="submit"
+          onClick={sendMailpassword}
+        />
         <Button
           classButton="btn-login"
           idButton="btn"
           champButton="Valider"
           type="submit"
           onClick={postUserLogin}
-        />
-        <Button
-          idButton="btn"
-          champButton="Mot de passe oublié"
-          type="submit"
-          onClick={sendMailpassword}
         />
       </form>
     </div>
