@@ -50,7 +50,9 @@ function Proposition() {
           })()}
         </div>
         <div className="gare-select">
-          <label htmlFor="gare-select">Depuis la gare de:</label>
+          <label className="label-select" htmlFor="gare-select">
+            Depuis la gare de:
+          </label>
 
           <select
             name="gare"
@@ -97,7 +99,9 @@ function Proposition() {
         />
 
         <div className="dateTime">
-          <label htmlFor="date">Le:</label>
+          <label className="label-date" htmlFor="date">
+            Le :
+          </label>
           <Input
             forId="dated"
             type="date"
@@ -131,6 +135,7 @@ function Proposition() {
               return (
                 <Link to={`/Mytrips/${usersId}/${origin}/${date}/${hour}`}>
                   <Button
+                    classButton="btn-choise"
                     idButton="btn"
                     type="submit"
                     champButton="Valider"
@@ -156,6 +161,7 @@ function Proposition() {
               return (
                 <Link to="/ValidateTrips">
                   <Button
+                    classButton="btn-choise"
                     idButton="btn"
                     type="submit"
                     champButton="Valider"

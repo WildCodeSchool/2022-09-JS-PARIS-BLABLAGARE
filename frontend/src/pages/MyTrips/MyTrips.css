@@ -55,7 +55,10 @@
 .fond {
   min-height: 70vh;
 }
+
 @media (min-width: 768px) {
+  .Btn-trips-offre,
+  .Btn-trips-search,
   .result-container {
     font-size: 1.75rem;
   }

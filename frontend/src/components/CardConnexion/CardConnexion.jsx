@@ -40,7 +40,6 @@ function Connexion() {
       <form className="form-input ">
         <Input
           className="input-login"
-          forId="name"
           type="text"
           champ="Pseudo :"
           onChange={(e) => setAlias(e.target.value)}

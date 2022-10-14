@@ -74,8 +74,8 @@ export default function CardUpdate() {
   const isConfirmPassword = password !== confirmPassword;
 
   return (
-    <div className="inscription">
-      <form className="input-inscription">
+    <div className="update">
+      <form className="input-update">
         <Input
           forId="firstName"
           type="text"

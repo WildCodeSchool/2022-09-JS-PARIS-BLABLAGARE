@@ -20,6 +20,8 @@
   height: 5vh;
   width: 55vw;
   font-size: 1rem;
+  border-radius: 5px;
+  border: none;
 }
 
 .form-input {
@@ -48,7 +50,7 @@
 @media screen and (min-width: 768px) {
   .connexion,
   .input-login,
-  #btn {
+  .btn-login {
     font-size: 2rem;
   }
   .input-container {

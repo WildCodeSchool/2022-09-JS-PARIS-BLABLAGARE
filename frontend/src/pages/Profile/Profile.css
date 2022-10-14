@@ -1,12 +1,14 @@
-.inscription {
-  min-height: 65vh;
+.container-profile {
+  min-height: 70vh;
+}
+
+.update {
+  min-height: 68vh;
   width: 80vw;
   background-color: #0088ce;
   border-radius: 20px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 8vh;
-  margin-top: 2vh;
 }
 #mdp,
 #confMdp {
@@ -24,7 +26,7 @@
   display: none;
 }
 
-.input-inscription {
+.input-update {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,24 +56,23 @@
   margin-top: 1vh;
   margin-bottom: 1vh;
 }
-
+.upd-del {
+  display: flex;
+}
 .btnUpdate {
-  margin-left: 33vw;
-  margin-top: 3vh;
   font-size: 17px;
   border: none;
   background-color: #0088ce;
   color: white;
-  margin-right: -20vw;
 }
 .btnDelete {
-  margin-left: 33vw;
-  margin-top: 3vh;
+  margin-left: 18vw;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
   font-size: 17px;
   border: none;
   background-color: #0088ce;
   color: white;
-  margin-right: 34vw;
 }
 
 @media screen and (min-width: 768px) {
@@ -79,10 +80,9 @@
     display: none;
   }
 
-  .inscription {
-    min-height: 65vh;
+  .update {
+    height: 70vh;
     width: 70vw;
-    margin-top: 5vh;
   }
 
   #firstName,
@@ -96,19 +96,23 @@
   }
 
   .eye {
-    margin-top: -48px;
+    margin-top: -60px;
     margin-left: 123px;
   }
 
-  .input-inscription {
+  .input-update {
     font-size: 25px;
+    padding-top: 1vh;
   }
+
   .btnUpdate {
     font-size: 23px;
   }
 
   .btnDelete {
     font-size: 23px;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -116,21 +120,20 @@
   .container-profile {
     display: flex;
     flex-direction: row-reverse;
+    align-items: center;
   }
 
   .imgcovoit-profile {
-    height: 81vh;
-    width: 59vw;
+    width: 55vw;
+    height: 60vh;
     display: block;
-    margin-top: 3vh;
     border-radius: 20px;
     margin-right: 2vw;
   }
 
-  .inscription {
-    min-height: 65vh;
+  .update {
+    height: 80vh;
     width: 35vw;
-    margin-top: 3vh;
   }
   #firstName,
   #lastName,
@@ -143,17 +146,12 @@
   }
 
   .eye {
-    margin-top: -36px;
+    margin-top: -47px;
     margin-left: 96px;
   }
-  .btn {
-    font-size: 25px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    margin-right: 10vw;
-  }
+
   .btnDelete {
-    margin-left: 32vw;
+    margin-left: 8vw;
   }
 }
 
@@ -162,13 +160,7 @@
     display: none;
   }
 
-  .text {
-    min-height: 65vh;
-    width: 35vw;
-    margin-top: 3vh;
-  }
-
-  .input-inscription {
+  .input-update {
     font-size: 30px;
   }
   .message-input {
@@ -178,17 +170,18 @@
     background-image: url("../../assets/covoit1.jpg");
     background-size: cover;
   }
-  .inscription {
+  .update {
     margin-top: 3vh;
     margin-bottom: 3vh;
-    margin-left: 33vw;
+    height: 73vh;
   }
   .eye {
-    margin-top: -70px;
-    margin-left: 113px;
+    margin-top: -63px;
+    margin-left: 125px;
   }
-  .btn {
-    font-size: 30px;
+
+  .btnDelete {
+    margin-left: 11vw;
   }
 }
 
