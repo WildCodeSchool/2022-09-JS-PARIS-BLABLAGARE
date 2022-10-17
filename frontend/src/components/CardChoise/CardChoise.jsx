@@ -11,13 +11,13 @@ function Proposition() {
   const { aliasUser } = useContext(UserContext);
   const { userOption } = useContext(UserOptionContext);
   const [search, setSearch] = useState(userOption !== "proposition");
-  const [origin, setOrigin] = useState();
-  const [dest1, setDest1] = useState();
-  const [dest2, setDest2] = useState();
-  const [dest3, setDest3] = useState();
-  const [date, setDate] = useState();
-  const [hour, setHour] = useState();
-  const [comments, setComments] = useState();
+  const [origin, setOrigin] = useState("");
+  const [dest1, setDest1] = useState("");
+  const [dest2, setDest2] = useState("");
+  const [dest3, setDest3] = useState("");
+  const [date, setDate] = useState("");
+  const [hour, setHour] = useState("");
+  const [comments, setComments] = useState("");
   const [usersId, setUsersId] = useState(aliasUser.u_id);
   const navigate = useNavigate();
   const data = {
@@ -31,26 +31,38 @@ function Proposition() {
     comments,
     usersId,
   };
+  function verifOrigin() {
+    if (origin !== "") {
+      return true;
+    }
+    return false;
+  }
   function verifdest1() {
-    if (setDest1 !== "") {
+    if (dest1 !== "") {
       return true;
     }
     return false;
   }
   function verifdate() {
-    if (setDate !== "") {
+    if (date !== "") {
       return true;
     }
     return false;
   }
   function verifhour() {
-    if (setHour !== "") {
+    if (hour !== "") {
       return true;
     }
     return false;
   }
   function handleChange() {
-    if (verifdest1 === true && verifdate === true && verifhour === true) {
+    if (
+      verifOrigin(origin) &&
+      verifdest1(dest1) &&
+      verifdate(date) &&
+      verifhour(hour) &&
+      userOption === "recherche"
+    ) {
       return (e) =>
         postTrips(
           data,
@@ -66,6 +78,30 @@ function Proposition() {
           e,
           navigate(`/Mytrips/${usersId}/${origin}/${date}/${hour}`)
         );
+    }
+    if (
+      verifOrigin(origin) &&
+      verifdest1(dest1) &&
+      verifdate(date) &&
+      verifhour(hour) &&
+      userOption === "proposition"
+    ) {
+      return (e) => {
+        postTrips(
+          data,
+          setSearch,
+          setOrigin,
+          setDest1,
+          setDest2,
+          setDest3,
+          setDate,
+          setHour,
+          setComments,
+          setUsersId,
+          e,
+          navigate("/ValidateTrips")
+        );
+      };
     }
     return null;
   }
@@ -98,6 +134,7 @@ function Proposition() {
               name="gare"
               id="dep"
               onChange={(e) => setOrigin(e.target.value)}
+              required
             >
               <option value="">Gare de:</option>
               <option value="Nantes">Nantes</option>
