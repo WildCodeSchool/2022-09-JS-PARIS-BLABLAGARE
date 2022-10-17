@@ -6,7 +6,6 @@ const getUsers = async (req, res) => {
 };
 
 const getUser = (req, res) => {
-  // eslint-disable-next-line prefer-destructuring
   const alias = req.params.alias;
   sqldb
     .query("SELECT * FROM users WHERE u_alias = ?", [alias])
@@ -59,7 +58,6 @@ const updateUsers = (req, res) => {
   sqldb
     .query(
       "UPDATE users SET u_firstname =?, u_lastname =?, u_email =?, u_alias =?, u_hashedPassword =? WHERE u_id =?",
-      // eslint-disable-next-line no-undef
       [firstname, lastname, email, alias, hashedPassword, id]
     )
     .then(([result]) => {
@@ -79,11 +77,10 @@ const updateUsersPassword = (req, res) => {
   const alias = req.payload.sub;
   const { hashedPassword } = req.body;
   sqldb
-    .query(
-      "UPDATE users SET u_hashedPassword =? WHERE u_alias =?",
-      // eslint-disable-next-line no-undef
-      [hashedPassword, alias]
-    )
+    .query("UPDATE users SET u_hashedPassword =? WHERE u_alias =?", [
+      hashedPassword,
+      alias,
+    ])
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.status(404).send("Not Found");
@@ -105,7 +102,6 @@ const getUserByAliasWithPasswordAndPassToNext = (req, res, next) => {
     .query("SELECT * FROM users WHERE u_alias =?", [alias])
     .then(([users]) => {
       if (users[0] != null) {
-        // eslint-disable-next-line prefer-destructuring
         req.user = users[0];
         next();
       } else {
