@@ -43,9 +43,9 @@ function Connexion() {
 
   return (
     <div className="connexion">
-      <form>
+      <form className="form-input ">
         <Input
-          forId="name"
+          className="input-login"
           type="text"
           champ="Pseudo :"
           onChange={(e) => setAlias(e.target.value)}
@@ -54,6 +54,7 @@ function Connexion() {
           placeholder="Babe"
         />
         <Input
+          className="input-login"
           forId="pass"
           type="password"
           champ="Mot de passe :"
@@ -63,18 +64,19 @@ function Connexion() {
           autoComplete="on"
           placeholder="Mot de passe"
         />
-
         <Button
-          idButton="btn"
-          champButton="Valider"
-          type="submit"
-          onClick={postUserLogin}
-        />
-        <Button
+          classButton="btn-reset"
           idButton="btn"
           champButton="Mot de passe oublié"
           type="submit"
           onClick={sendMailpassword}
+        />
+        <Button
+          classButton="btn-login"
+          idButton="btn"
+          champButton="Valider"
+          type="submit"
+          onClick={postUserLogin}
         />
       </form>
     </div>

@@ -8,14 +8,14 @@ import "./createCount.css";
 export default function createCount() {
   return (
     <>
-      <Navbar />
+      <Navbar acc="acc-home" compte="compte-home" />
       <div className="container-inscription">
         <div className="covoit-inscription">
           <img src={Covoit} alt="covoit" className="imgcovoit-inscription" />
         </div>
         <Inscription />
       </div>
-      <Background />
+      <Background deconnect="deco-home" />
     </>
   );
 }

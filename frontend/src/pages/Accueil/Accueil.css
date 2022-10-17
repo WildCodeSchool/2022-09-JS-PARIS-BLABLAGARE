@@ -1,4 +1,90 @@
-@font-face {
-  font-family: "Avenir book";
-  src: url("../../assets/fonts/avenir/AvenirLTStd-Book.otf") format("opentype");
+.user {
+  height: 52vh;
+  width: 80vw;
+  background-color: #0088ce;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+  margin-top: 3vh;
+  margin-bottom: 15vh;
+  justify-content: space-evenly;
+}
+
+.list-accueil {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.li-accueil {
+  margin: 25px;
+}
+
+.link-accueil {
+  color: white;
+}
+.covoit3 {
+  display: none;
+}
+.acc-accueil {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .user {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .covoit3 {
+    display: inherit;
+  }
+
+  .imgcovoit {
+    width: 55vw;
+    height: 60vh;
+    margin-left: 15px;
+    border-radius: 20px;
+    margin-right: 4px;
+  }
+
+  .container-accueil {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin-right: 15px;
+    margin-left: 15px;
+    height: 68vh;
+  }
+  .user {
+    font-size: 1.75rem;
+    height: 45vh;
+    margin-top: 14vh;
+  }
+  .list-accueil {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .covoit3 {
+    display: none;
+  }
+  .container-accueil {
+    background-image: url(../../assets/covoit1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 0px;
+    margin-left: 0px;
+    font-size: 2rem;
+    height: 70vh;
+  }
+  .user {
+    font-size: 2rem;
+  }
 }

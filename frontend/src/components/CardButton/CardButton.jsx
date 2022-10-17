@@ -10,16 +10,14 @@ export default function Button({
   disabled,
 }) {
   return (
-    <div className="button-container">
-      <button
-        type={type}
-        className={classButton}
-        id={idButton}
-        onClick={onClick}
-        disabled={disabled}
-      >
-        {champButton}
-      </button>
-    </div>
+    <button
+      type={type}
+      className={classButton}
+      id={idButton}
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {champButton}
+    </button>
   );
 }

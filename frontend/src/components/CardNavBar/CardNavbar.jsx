@@ -3,7 +3,7 @@ import "./CardNavBar.css";
 import { Link } from "react-router-dom";
 import logoSncf from "../../assets/LOGO_SNCF.png";
 
-function NavBar() {
+function NavBar({ acc, compte }) {
   return (
     <div className="navbar">
       <a href="https://www.sncf.com/fr">
@@ -11,10 +11,14 @@ function NavBar() {
       </a>
       <ul className="link">
         <li className="accueil">
-          <Link to="/Accueil">Accueil</Link>
+          <Link className={`link-navbar ${acc}`} to="/Accueil">
+            Accueil
+          </Link>
         </li>
         <li className="profile">
-          <Link to="/Profile">Mon compte</Link>
+          <Link className={`link-navbar ${compte}`} to="/Profile">
+            Mon compte
+          </Link>
         </li>
       </ul>
     </div>

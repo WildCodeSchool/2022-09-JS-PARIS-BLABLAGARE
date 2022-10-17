@@ -7,12 +7,14 @@ import HomeComp from "../../components/CardHome/CardHome";
 export default function Home() {
   return (
     <>
-      <Navbar />
-      <div className="covoit">
-        <img src={Covoit} alt="covoit" className="imgcovoit" />
+      <Navbar acc="acc-home" compte="compte-home" />
+      <div className="container-home">
+        <div className="covoit">
+          <img src={Covoit} alt="covoit" className="imgcovoit" />
+        </div>
+        <HomeComp />
       </div>
-      <HomeComp />
-      <Background />
+      <Background deconnect="deco-home" />
     </>
   );
 }

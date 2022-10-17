@@ -28,7 +28,6 @@ export default function CardUpdate() {
 
   const update = async (e) => {
     e.preventDefault();
-
     const user = {
       userId,
       firstname,
@@ -41,11 +40,7 @@ export default function CardUpdate() {
     const token = sessionStorage.getItem("token");
     const config = { headers: { Authorization: `Bearer ${token}` } };
 
-    const response = await axios.put(
-      `http://localhost:5000/users/${userId}`,
-      user,
-      config
-    );
+    await axios.put(`http://localhost:5000/users/${userId}`, user, config);
     setFirstName("");
     setLastName("");
     setEmail("");
@@ -59,10 +54,7 @@ export default function CardUpdate() {
     const token = sessionStorage.getItem("token");
     const config = { headers: { Authorization: `Bearer ${token}` } };
 
-    const res = await axios.delete(
-      `http://localhost:5000/users/${userId}`,
-      config
-    );
+    await axios.delete(`http://localhost:5000/users/${userId}`, config);
     setFirstName("");
     setLastName("");
     setEmail("");
@@ -82,8 +74,8 @@ export default function CardUpdate() {
   const isConfirmPassword = password !== confirmPassword;
 
   return (
-    <div className="inscription">
-      <form className="input-inscription">
+    <div className="update">
+      <form className="input-update">
         <Input
           forId="firstName"
           type="text"
@@ -115,6 +107,8 @@ export default function CardUpdate() {
           required="required"
         />
         <Input
+          minLength={6}
+          required="required"
           forId="mdp"
           type={passwordIsVisible ? "text" : "password"}
           champ="Mot de passe :"
@@ -123,8 +117,6 @@ export default function CardUpdate() {
           name="mdp1"
           autoComplete="on"
           placeholder="Mot de passe"
-          minlength={6}
-          required="required"
         />
         <span
           onClick={() => setPasswordIsVisible(!passwordIsVisible)}
@@ -162,7 +154,9 @@ export default function CardUpdate() {
             alt={passwordConfIsVisible ? "Open Eye" : "Close Eye"}
           />
         </span>
-        {passwordMessage !== null && <span> {passwordMessage}</span>}
+        {passwordMessage !== null && (
+          <span className="span-mdp-diff"> {passwordMessage}</span>
+        )}
         <Input
           forId="email"
           type="email"
