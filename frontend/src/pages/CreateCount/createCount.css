@@ -20,6 +20,10 @@
   font-size: 17px;
 }
 
+.mdp-input {
+  text-align: center;
+}
+
 .message-input {
   color: red;
   font-size: 15px;

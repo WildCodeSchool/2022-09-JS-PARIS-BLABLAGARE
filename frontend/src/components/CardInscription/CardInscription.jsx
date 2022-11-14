@@ -7,9 +7,8 @@ import Input from "../CardInput/CardInput";
 
 function Inscription() {
   const navigate = useNavigate();
-  const [passwordMessage, setPasswordMessage] = useState(null);
-  const [lenghtPassword, setLenghtPassword] = useState(null);
   const [errorInscription, setErrorInscription] = useState(false);
+  const [passwordRegex, setPasswordRegex] = useState(true);
   const [inputMessage, setInputMessage] = useState({
     firstname: "",
     lastname: "",
@@ -50,6 +49,20 @@ function Inscription() {
       ...emptyInputs,
     });
   }
+  const regexPassword = (value) => {
+    return /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[-.:;,+!?*$@%_])([-.:;,+!?*$@%_\w]{8,})$/.test(
+      value
+    );
+  };
+
+  const passwordControle = () => {
+    if (regexPassword(inputs.password)) {
+      setPasswordRegex(true);
+      return true;
+    }
+    setPasswordRegex(false);
+    return false;
+  };
 
   function inputValid() {
     let canChangePage = true;
@@ -58,7 +71,7 @@ function Inscription() {
       if (el === "") {
         canChangePage = false;
       }
-      if (inputs.password.length < 6) {
+      if (passwordControle(inputs.password) === false) {
         canChangePage = false;
       }
     });
@@ -82,20 +95,6 @@ function Inscription() {
     }
   };
 
-  function validatePassword() {
-    if (inputs.password !== inputs.confirmPassword) {
-      setPasswordMessage("Mot de passe différent");
-    } else {
-      setPasswordMessage(null);
-    }
-  }
-  function minlength() {
-    if (inputs.password.length < 6) {
-      setLenghtPassword("6 caractéres minimum");
-    } else {
-      setLenghtPassword(null);
-    }
-  }
   const isConfirmPassword = inputs.password !== inputs.confirmPassword;
 
   return (
@@ -140,25 +139,29 @@ function Inscription() {
           name="password"
           autoComplete="on"
           placeholder="Mot de passe"
-          onBlur={() => minlength()}
         />
-        {lenghtPassword !== null && (
-          <p className="message-input"> {lenghtPassword}</p>
-        )}
+        <p className="message-input mdp-input">
+          {passwordRegex === false
+            ? "⚠️ le mot de passe doit contenir au minimum: une majuscule, une minuscule, un chiffre, un caractère spécial parmi : -.:;,+!?*$@%_ et doit contenir minimum 8 caractères"
+            : ""}
+        </p>
         <Input
           forId="confMdp"
           type="password"
           champ="Confirmation :"
           onChange={(e) => handleChange(e)}
           value={inputs.confirmPassword}
-          onBlur={() => validatePassword()}
           name="confirmPassword"
           autoComplete="on"
           placeholder="Mot de passe"
         />
-        {passwordMessage !== null && (
-          <p className="message-input"> {passwordMessage}</p>
-        )}
+
+        <p className="message-input mdp-input">
+          {isConfirmPassword === true
+            ? "⚠️ Les deux mots de passe doivent être identiques"
+            : ""}
+        </p>
+
         <Input
           forId="email"
           type="email"
@@ -166,7 +169,7 @@ function Inscription() {
           onChange={(e) => handleChange(e)}
           value={inputs.email}
           name="email"
-          placeholder="mail@exemple.fr"
+          placeholder="Email@exemple.fr"
         />
         <p className="message-input"> {inputMessage.email}</p>
         <Button
@@ -181,7 +184,6 @@ function Inscription() {
           }}
         />
         <p>
-          {" "}
           {errorInscription === true ? "le pseudo ou l'email existe déja" : ""}
         </p>
       </form>
