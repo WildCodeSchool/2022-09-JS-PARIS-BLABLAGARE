@@ -15,29 +15,28 @@
 }
 .alias {
   display: block;
-  color: red;
+  color: white;
+  margin-bottom: 1vh;
 }
 
 .propo-search {
-  color: red;
+  color: white;
 }
 
 .gare-select {
   display: flex;
   align-items: center;
-  margin-right: 3vw;
 }
 .text {
+  color: white;
   display: flex;
   flex-direction: column;
-  min-height: 65vh;
+  min-height: 70vh;
   width: 80vw;
   background-color: #0088ce;
   border-radius: 20px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 10vh;
-  margin-top: 7vh;
   align-items: center;
   justify-content: space-around;
 }
@@ -46,12 +45,15 @@
   height: 4vh;
   width: 33vw;
 }
+.label-select {
+  margin-right: 1vw;
+}
 
 .input-choise {
   height: 3vh;
   display: flex;
-  margin-left: 26vw;
-  margin-top: -2vh;
+  margin-left: 21vw;
+  margin-top: -3vh;
 }
 
 .dateTime {
@@ -59,9 +61,14 @@
   align-items: center;
 }
 
+.label-date {
+  margin-right: 3vw;
+}
+
 #dated {
   margin-right: 4vw;
   margin-left: 1vw;
+  height: 3vh;
 }
 
 #time {
@@ -75,7 +82,18 @@
   width: 65vw;
 }
 
+.btn-choise {
+  background-color: #0088ce;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 21px;
+}
 @media screen and (min-width: 768px) {
+  #dep {
+    font-size: 1.4rem;
+    width: 22vw;
+  }
   .sncf-trips {
     display: none;
   }
@@ -91,27 +109,38 @@
   }
 
   .text {
-    min-height: 65vh;
-    width: 75vw;
-    margin-top: 5vh;
+    font-size: 1.75rem;
   }
 
   #message {
     height: 10vh;
-    width: 47vw;
+    width: 49vw;
+    font-size: 1.4rem;
   }
 
   .input-choise {
-    width: 30vw;
-    margin-left: 16vw;
+    width: 31vw;
+    height: 4vh;
+    margin-left: 18vw;
+    font-size: 1.4rem;
   }
   #dated {
-    width: 20vw;
-    height: 3vh;
+    width: 19vw;
+    height: 4vh;
+    margin-right: 2vw;
+    margin-left: 0;
+    font-size: 1.4rem;
   }
   #time {
     width: 15vw;
-    height: 3vh;
+    height: 4vh;
+    font-size: 1.4rem;
+  }
+  .label-date {
+    margin-right: 3vw;
+  }
+  .btn-choise {
+    font-size: 2rem;
   }
 }
 
@@ -122,13 +151,14 @@
   .container-trips {
     display: flex;
     flex-direction: row-reverse;
+    align-items: center;
+    height: 68vh;
   }
 
   .imgcovoit-trips {
     display: block;
-    height: 71vh;
+    height: 60vh;
     width: 55vw;
-    margin-top: 3vh;
     border-radius: 20px;
     margin-right: 2vw;
   }
@@ -136,62 +166,83 @@
   .text {
     min-height: 71vh;
     width: 39vw;
-    margin-top: 3vh;
     margin-right: 2vw;
+    font-size: 1.4rem;
   }
 
   #dep {
-    height: 3vh;
-    width: 20vw;
+    height: 5vh;
+    width: 14vw;
   }
 
   .input-choise {
     width: 15vw;
-    margin-left: 14vw;
+    margin-left: 15vw;
   }
 
+  .label-date {
+    margin-right: 1vw;
+  }
   #dated {
-    width: 10vw;
+    width: 13vw;
   }
 
   #time {
-    width: 9vw;
+    width: 7vw;
   }
 
   #message {
-    width: 29vw;
+    width: 30vw;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .link {
-    font-size: 2vw;
+  .covoit-trips {
+    display: none;
   }
+  .container-trips {
+    background-image: url(../../assets/covoit1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 0px;
+    margin-left: 0px;
+    font-size: 2rem;
+    height: 70vh;
+  }
+
   .text {
-    min-height: 55vh;
+    min-height: 62vh;
+    width: 62vw;
+    margin-right: 17vw;
+    font-size: 2.2rem;
   }
-  .imgcovoit-trips {
-    height: 55vh;
+  .alias {
+    margin-bottom: 0;
   }
+  .label-date {
+    margin-right: 4vw;
+  }
+
   #dep {
-    height: 2vh;
+    height: 4vh;
   }
   .input-choise {
-    width: 15vw;
-    height: 2vh;
-    margin-left: 11vw;
+    width: 17vw;
+    height: 4vh;
+    margin-left: 15vw;
   }
   #dated {
-    height: 2vh;
+    height: 4vh;
+    width: 12vw;
   }
   #time {
     width: 7vw;
     margin-right: 0vw;
-    height: 2vh;
+    height: 4vh;
   }
 
   #message {
     height: 8vh;
-    width: 27vw;
+    width: 32vw;
   }
 }

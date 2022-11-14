@@ -1,0 +1,108 @@
+.connexion {
+  height: 38vh;
+  width: 80vw;
+  background-color: #0088ce;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 22px;
+  margin-bottom: 32vh;
+}
+
+.input-login {
+  display: flex;
+  margin: 10px;
+  margin-left: 20px;
+  height: 5vh;
+  width: 55vw;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.btn-reset {
+  background-color: #0088ce;
+  border: none;
+  cursor: pointer;
+  color: white;
+  margin-right: 2vh;
+}
+
+.btn-login {
+  background-color: #0088ce;
+  border: none;
+  cursor: pointer;
+  color: white;
+  margin-top: 20px;
+  font-size: 21px;
+}
+
+.covoit2 {
+  display: none;
+}
+.acc-login,
+.compte-login,
+.deco-login {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .connexion,
+  .input-login,
+  .btn-login {
+    font-size: 2rem;
+  }
+  .input-container {
+    margin-bottom: 10px;
+  }
+  .btn-reset {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .covoit2 {
+    display: inherit;
+  }
+  .container-login {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin-right: 15px;
+    margin-left: 15px;
+    height: 68vh;
+  }
+  .connexion {
+    width: 40vw;
+    height: 40vh;
+    margin-top: 30vh;
+  }
+
+  .input-login {
+    height: 5vh;
+    width: 30vw;
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .covoit2 {
+    display: none;
+  }
+  .container-login {
+    background-image: url(../../assets/covoit1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 0px;
+    margin-left: 0px;
+    height: 70vh;
+  }
+}

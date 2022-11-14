@@ -12,6 +12,11 @@ function Connexion() {
   const navigate = useNavigate();
   const { setAliasUser } = useContext(UserContext);
 
+  const sendMailpassword = async (e) => {
+    e.preventDefault();
+    await axios.put(`http://localhost:5000/forgotPassword/${alias}`);
+  };
+
   const postUserLogin = async (e) => {
     e.preventDefault();
 
@@ -35,11 +40,12 @@ function Connexion() {
     setPassword("");
     navigate("/Accueil");
   };
+
   return (
     <div className="connexion">
-      <form>
+      <form className="form-input ">
         <Input
-          forId="name"
+          className="input-login"
           type="text"
           champ="Pseudo :"
           onChange={(e) => setAlias(e.target.value)}
@@ -48,6 +54,7 @@ function Connexion() {
           placeholder="Pseudo"
         />
         <Input
+          className="input-login"
           forId="pass"
           type="password"
           champ="Mot de passe :"
@@ -57,8 +64,15 @@ function Connexion() {
           autoComplete="on"
           placeholder="Mot de passe"
         />
-
         <Button
+          classButton="btn-reset"
+          idButton="btn"
+          champButton="Mot de passe oublié"
+          type="submit"
+          onClick={sendMailpassword}
+        />
+        <Button
+          classButton="btn-login"
           idButton="btn"
           champButton="Valider"
           type="submit"

@@ -1,12 +1,10 @@
 .inscription {
-  min-height: 65vh;
+  min-height: 70vh;
   width: 80vw;
   background-color: #0088ce;
   border-radius: 20px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 10vh;
-  margin-top: 7vh;
 }
 
 .imgcovoit-inscription {
@@ -44,8 +42,9 @@
 }
 
 .button-inscription {
-  margin-left: 33vw;
-  margin-top: 3vh;
+  margin-left: 50vw;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
   font-size: 17px;
   border: none;
   background-color: #0088ce;
@@ -58,9 +57,7 @@
   }
 
   .inscription {
-    min-height: 65vh;
     width: 70vw;
-    margin-top: 5vh;
   }
 
   #firstName,
@@ -71,6 +68,7 @@
   #email {
     height: 5vh;
     width: 43vw;
+    font-size: 1.5rem;
   }
   .input-inscription {
     font-size: 25px;
@@ -78,8 +76,8 @@
 
   .button-inscription {
     font-size: 25px;
-    margin-bottom: 20px;
-    margin-top: 1px;
+    margin-top: -7px;
+    margin-left: 41vw;
   }
 }
 
@@ -87,21 +85,20 @@
   .container-inscription {
     display: flex;
     flex-direction: row-reverse;
+    align-items: center;
   }
 
   .imgcovoit-inscription {
-    height: 77vh;
-    width: 59vw;
+    width: 55vw;
+    height: 60vh;
     display: block;
-    margin-top: 3vh;
     border-radius: 20px;
     margin-right: 2vw;
   }
 
   .inscription {
-    min-height: 65vh;
+    min-height: 80vh;
     width: 35vw;
-    margin-top: 3vh;
   }
   #firstName,
   #lastName,
@@ -111,24 +108,18 @@
   #email {
     height: 5vh;
     width: 25vw;
+    margin-bottom: 0;
   }
   .button-inscription {
     font-size: 25px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    margin-right: 10vw;
+    margin-right: 17vw;
+    margin-top: 0;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .imgcovoit-inscription {
     display: none;
-  }
-
-  .text {
-    min-height: 65vh;
-    width: 35vw;
-    margin-top: 3vh;
   }
 
   .input-inscription {
@@ -144,7 +135,7 @@
   .inscription {
     margin-top: 3vh;
     margin-bottom: 3vh;
-    margin-left: 33vw;
+    min-height: 74vh;
   }
 
   .button-inscription {

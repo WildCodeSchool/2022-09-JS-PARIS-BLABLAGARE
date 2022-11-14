@@ -13,21 +13,22 @@ export default function Confirmation() {
           case "proposition":
             return (
               <>
-                <p>Offre bien prise en compte.</p>{" "}
-                <p>Merci {aliasUser.u_alias} !</p>{" "}
+                <p className="text-conf">Offre bien prise en compte.</p>
+                <p className="text-conf">Merci {aliasUser.u_alias} !</p>
               </>
             );
           case "recherche":
             return (
               <>
-                <p>Message envoyé.</p> <p>Merci {aliasUser.u_alias} !</p>{" "}
+                <p className="text-conf">Message envoyé.</p>{" "}
+                <p className="text-conf">Merci {aliasUser.u_alias} !</p>{" "}
               </>
             );
           case "suppresion":
             return (
               <>
-                <p>Annonce bien supprimée.</p>{" "}
-                <p>Merci {aliasUser.u_alias} !</p>{" "}
+                <p className="text-conf">Annonce bien supprimée.</p>
+                <p className="text-conf">Merci {aliasUser.u_alias} !</p>
               </>
             );
           default:

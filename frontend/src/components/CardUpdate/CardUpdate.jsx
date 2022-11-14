@@ -139,8 +139,8 @@ export default function CardUpdate() {
   };
 
   return (
-    <div className="inscription">
-      <form>
+    <div className="update">
+      <form className="input-update">
         <Input
           forId="firstName"
           type="text"
@@ -178,6 +178,8 @@ export default function CardUpdate() {
           {alias === "" ? " Veuillez entrer un pseudo" : ""}
         </p>
         <Input
+          minLength={6}
+          required="required"
           forId="mdp"
           type={passwordIsVisible ? "text" : "password"}
           champ="Mot de passe :"
@@ -185,7 +187,7 @@ export default function CardUpdate() {
           value={password}
           name="password"
           autoComplete="on"
-          required="required"
+          placeholder="Mot de passe"
         />
 
         <p className="message-input">
