@@ -9,6 +9,7 @@ function Inscription() {
   const navigate = useNavigate();
   const [passwordMessage, setPasswordMessage] = useState(null);
   const [lenghtPassword, setLenghtPassword] = useState(null);
+  const [errorInscription, setErrorInscription] = useState(false);
   const [inputMessage, setInputMessage] = useState({
     firstname: "",
     lastname: "",
@@ -68,10 +69,16 @@ function Inscription() {
     e.preventDefault();
     check();
     if (inputValid()) {
-      axios.post(`http://localhost:5000/users`, inputs).then(() => {
-        setInputs(initialValues);
-        navigate("/Login");
-      });
+      axios
+        .post(`http://localhost:5000/users`, inputs)
+        .then(() => {
+          setErrorInscription(false);
+          setInputs(initialValues);
+          navigate("/Login");
+        })
+        .catch((err) => {
+          setErrorInscription(true);
+        });
     }
   };
 
@@ -101,9 +108,9 @@ function Inscription() {
           onChange={(e) => handleChange(e)}
           value={inputs.firstname}
           name="firstname"
-          placeholder="Jean"
+          placeholder="Nom"
         />
-        <span className="message-input"> {inputMessage.firstname}</span>
+        <p className="message-input"> {inputMessage.firstname}</p>
         <Input
           forId="lastName"
           type="text"
@@ -111,9 +118,9 @@ function Inscription() {
           onChange={(e) => handleChange(e)}
           value={inputs.lastname}
           name="lastname"
-          placeholder="Bon"
+          placeholder="Prénom"
         />
-        <span className="message-input"> {inputMessage.lastname}</span>
+        <p className="message-input"> {inputMessage.lastname}</p>
         <Input
           forId="name"
           type="text"
@@ -121,9 +128,9 @@ function Inscription() {
           onChange={(e) => handleChange(e)}
           value={inputs.alias}
           name="alias"
-          placeholder="Babe"
+          placeholder="Pseudo"
         />
-        <span className="message-input"> {inputMessage.alias}</span>
+        <p className="message-input"> {inputMessage.alias}</p>
         <Input
           forId="mdp"
           type="password"
@@ -136,7 +143,7 @@ function Inscription() {
           onBlur={() => minlength()}
         />
         {lenghtPassword !== null && (
-          <span className="message-input"> {lenghtPassword}</span>
+          <p className="message-input"> {lenghtPassword}</p>
         )}
         <Input
           forId="confMdp"
@@ -150,7 +157,7 @@ function Inscription() {
           placeholder="Mot de passe"
         />
         {passwordMessage !== null && (
-          <span className="message-input"> {passwordMessage}</span>
+          <p className="message-input"> {passwordMessage}</p>
         )}
         <Input
           forId="email"
@@ -159,9 +166,9 @@ function Inscription() {
           onChange={(e) => handleChange(e)}
           value={inputs.email}
           name="email"
-          placeholder="jean_bon@herta.fr"
+          placeholder="mail@exemple.fr"
         />
-        <span className="message-input"> {inputMessage.email}</span>
+        <p className="message-input"> {inputMessage.email}</p>
         <Button
           disabled={isConfirmPassword}
           idButton="btn"
@@ -173,6 +180,10 @@ function Inscription() {
             sendData(e);
           }}
         />
+        <p>
+          {" "}
+          {errorInscription === true ? "le pseudo ou l'email existe déja" : ""}
+        </p>
       </form>
     </div>
   );

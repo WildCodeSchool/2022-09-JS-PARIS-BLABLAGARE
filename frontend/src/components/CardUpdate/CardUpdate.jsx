@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserContext from "../../Context/UserContext";
 import "./CardUpdate.css";
 import Button from "../CardButton/CardButton";
@@ -9,81 +9,138 @@ import openEye from "../../assets/open-eye.svg";
 import closeEye from "../../assets/close-eye.svg";
 
 export default function CardUpdate() {
-  const { aliasUser } = useContext(UserContext);
-  const userId = aliasUser.u_id;
-  const Firstname = aliasUser.u_firstname;
-  const Lastname = aliasUser.u_lastname;
-  const Email = aliasUser.u_email;
-  const Alias = aliasUser.u_alias;
+  const navigate = useNavigate();
 
-  const [firstname, setFirstName] = useState(Firstname);
-  const [lastname, setLastName] = useState(Lastname);
-  const [email, setEmail] = useState(Email);
-  const [alias, setAlias] = useState(Alias);
+  const { aliasUser } = useContext(UserContext);
+  const id = aliasUser.u_id;
+  const firstnameDefault = aliasUser.u_firstname;
+  const lastnameDefault = aliasUser.u_lastname;
+  const emailDefault = aliasUser.u_email;
+  const aliasDefault = aliasUser.u_alias;
+
+  const [firstname, setFirstName] = useState(firstnameDefault);
+  const [lastname, setLastName] = useState(lastnameDefault);
+  const [email, setEmail] = useState(emailDefault);
+  const [alias, setAlias] = useState(aliasDefault);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [passwordMessage, setPasswordMessage] = useState(null);
+
   const [passwordIsVisible, setPasswordIsVisible] = useState(false);
   const [passwordConfIsVisible, setPasswordConfIsVisible] = useState(false);
+  const [success, setSuccess] = useState(false);
 
-  const update = async (e) => {
+  const [errorUpdate, setErrorUpdate] = useState(false);
+
+  const isConfirmPassword = password !== confirmPassword;
+
+  const user = {
+    id,
+    firstname,
+    lastname,
+    email,
+    alias,
+    password,
+  };
+
+  function checkFirstName() {
+    if (firstname !== "") {
+      return true;
+    }
+    return false;
+  }
+
+  function checkLastName() {
+    if (lastname !== "") {
+      return true;
+    }
+    return false;
+  }
+
+  function checkEmail() {
+    if (email !== "") {
+      return true;
+    }
+    return false;
+  }
+
+  function checkAlias() {
+    if (alias !== "") {
+      return true;
+    }
+    return false;
+  }
+
+  function checkPassword() {
+    if (password !== "") {
+      return true;
+    }
+    return false;
+  }
+
+  function checkConfirmPassword() {
+    if (confirmPassword !== "") {
+      return true;
+    }
+    return false;
+  }
+
+  const nav = () => {
+    navigate("/Accueil");
+  };
+
+  const tempoNav = () => {
+    setTimeout(nav, 2000);
+  };
+
+  const update = (e) => {
     e.preventDefault();
 
-    const user = {
-      userId,
-      firstname,
-      lastname,
-      email,
-      alias,
-      password,
-    };
+    if (
+      checkFirstName() === true &&
+      checkLastName() === true &&
+      checkEmail() === true &&
+      checkAlias() === true &&
+      checkPassword() === true &&
+      checkConfirmPassword() === true
+    ) {
+      const token = sessionStorage.getItem("token");
+      const config = { headers: { Authorization: `Bearer ${token}` } };
+      axios
+        .put(`http://localhost:5000/users/${id}`, user, config)
+        .then(() => {
+          setErrorUpdate(false);
+          setSuccess(true);
+          tempoNav();
+        })
+        .catch((err) => {
+          setErrorUpdate(true);
+        });
+    }
+  };
 
-    const token = sessionStorage.getItem("token");
-    const config = { headers: { Authorization: `Bearer ${token}` } };
+  const navDel = () => {
+    navigate("/");
+  };
 
-    const response = await axios.put(
-      `http://localhost:5000/users/${userId}`,
-      user,
-      config
-    );
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setAlias("");
-    setPassword("");
-    setConfirmPassword("");
-    alert("Modification effectué avec succès");
+  const tempoNavDel = () => {
+    setTimeout(navDel, 2000);
   };
 
   const deleteUser = async () => {
     const token = sessionStorage.getItem("token");
     const config = { headers: { Authorization: `Bearer ${token}` } };
 
-    const res = await axios.delete(
-      `http://localhost:5000/users/${userId}`,
-      config
-    );
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setAlias("");
-    setPassword("");
-    setConfirmPassword("");
+    const res = await axios
+      .delete(`http://localhost:5000/users/${id}`, config)
+      .then(() => {
+        tempoNavDel();
+        setSuccess(true);
+      });
   };
-
-  function validatePassword() {
-    if (password !== confirmPassword) {
-      setPasswordMessage("Mot de passe différent");
-    } else {
-      setPasswordMessage(null);
-    }
-  }
-
-  const isConfirmPassword = password !== confirmPassword;
 
   return (
     <div className="inscription">
-      <form className="input-inscription">
+      <form>
         <Input
           forId="firstName"
           type="text"
@@ -91,9 +148,11 @@ export default function CardUpdate() {
           onChange={(e) => setFirstName(e.target.value)}
           value={firstname}
           name="firstName"
-          placeholder="firstName"
           required="required"
         />
+        <p className="message-input">
+          {firstname === "" ? " Veuillez entrer un nom" : ""}
+        </p>
         <Input
           forId="lastName"
           type="text"
@@ -101,9 +160,11 @@ export default function CardUpdate() {
           onChange={(e) => setLastName(e.target.value)}
           value={lastname}
           name="lastName"
-          placeholder="lastName"
           required="required"
         />
+        <p className="message-input">
+          {lastname === "" ? " Veuillez entrer un prénom " : ""}
+        </p>
         <Input
           forId="name"
           type="text"
@@ -111,29 +172,33 @@ export default function CardUpdate() {
           onChange={(e) => setAlias(e.target.value)}
           value={alias}
           name="alias"
-          placeholder="alias"
           required="required"
         />
+        <p className="message-input">
+          {alias === "" ? " Veuillez entrer un pseudo" : ""}
+        </p>
         <Input
           forId="mdp"
           type={passwordIsVisible ? "text" : "password"}
           champ="Mot de passe :"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
-          name="mdp1"
+          name="password"
           autoComplete="on"
-          placeholder="Mot de passe"
-          minlength={6}
           required="required"
         />
+
+        <p className="message-input">
+          {password === "" ? " Veuillez entrer un mot de passe " : ""}
+        </p>
         <span
           onClick={() => setPasswordIsVisible(!passwordIsVisible)}
           onKeyDown={() => setPasswordIsVisible(!passwordIsVisible)}
           role="button"
           aria-hidden="true"
+          className="eye"
         >
           <img
-            className="eye"
             src={passwordIsVisible ? openEye : closeEye}
             alt={passwordIsVisible ? "Open Eye" : "Close Eye"}
           />
@@ -144,25 +209,25 @@ export default function CardUpdate() {
           champ="Confirmation :"
           onChange={(e) => setConfirmPassword(e.target.value)}
           value={confirmPassword}
-          onBlur={() => validatePassword()}
-          name="mdp2"
+          name="confirmPassword"
           autoComplete="on"
-          placeholder="Mot de passe"
           required="required"
         />
+        <p>
+          {isConfirmPassword === true ? "attention mot de passe different" : ""}
+        </p>
         <span
           onClick={() => setPasswordConfIsVisible(!passwordConfIsVisible)}
           onKeyDown={() => setPasswordConfIsVisible(!passwordConfIsVisible)}
           role="button"
           aria-hidden="true"
+          className="eye"
         >
           <img
-            className="eye"
             src={passwordConfIsVisible ? openEye : closeEye}
             alt={passwordConfIsVisible ? "Open Eye" : "Close Eye"}
           />
         </span>
-        {passwordMessage !== null && <span> {passwordMessage}</span>}
         <Input
           forId="email"
           type="email"
@@ -170,31 +235,31 @@ export default function CardUpdate() {
           onChange={(e) => setEmail(e.target.value)}
           value={email}
           name="email"
-          placeholder="jean_bon@herta.fr"
           required="required"
         />
-
-        <div className="upd-del">
+        <p className="message-input">
+          {email === "" ? " Veuillez entrer une adresse mail " : ""}
+        </p>
+        <Button
+          disabled={isConfirmPassword}
+          idButton="btn"
+          classButton="btnUpdate"
+          champButton="Modifier"
+          type="submit"
+          onClick={(e) => update(e)}
+        />
+        <p>{success === true ? "Modification effectué avec succes" : ""}</p>
+        <p> {errorUpdate === true ? "le pseudo ou l'email existe déja" : ""}</p>
+        <Link to="/">
           <Button
-            disabled={isConfirmPassword}
             idButton="btn"
-            classButton="btnUpdate"
-            champButton="Modifer"
+            classButton="btnDelete"
+            champButton="Supprimer"
             type="submit"
-            value="Modifier"
-            onClick={update}
+            onClick={deleteUser}
           />
-          <Link to="/">
-            <Button
-              idButton="btn"
-              classButton="btnDelete"
-              champButton="Supprimer"
-              type="submit"
-              value="Supprimer"
-              onClick={deleteUser}
-            />
-          </Link>
-        </div>
+        </Link>
+        <p>{success === true ? "Compte supprimé avec succes" : ""}</p>
       </form>
     </div>
   );

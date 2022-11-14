@@ -45,7 +45,7 @@ function Connexion() {
           onChange={(e) => setAlias(e.target.value)}
           value={alias}
           name="alias"
-          placeholder="Babe"
+          placeholder="Pseudo"
         />
         <Input
           forId="pass"
