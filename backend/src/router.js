@@ -2,14 +2,14 @@ const express = require("express");
 
 const router = express.Router();
 
-const { validateUser } = require("./validators");
+const { validateUser } = require("./middleware/validators");
 const {
   hashPassword,
   verifyPassword,
   verifyToken,
   killToken,
   isTokenKilled,
-} = require("./auth");
+} = require("./middleware/auth");
 
 const usersControllers = require("./controllers/usersControllers");
 const tripsControllers = require("./controllers/tripsControllers");

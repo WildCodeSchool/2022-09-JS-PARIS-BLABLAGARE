@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
-const { sqldb } = require("../../db");
+const { sqldb } = require("../models/db");
 
 function mail(req) {
   const { senderEmail, receiverEmail } = req.body;

@@ -1,4 +1,4 @@
-const { sqldb } = require("../../db");
+const { sqldb } = require("../models/db");
 
 const getTrips = (req, res) => {
   const { id, origin, day, hour } = req.params;

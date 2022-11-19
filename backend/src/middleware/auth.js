@@ -1,6 +1,6 @@
 const argon2 = require("argon2");
 const jwt = require("jsonwebtoken");
-const { sqldb } = require("../db");
+const { sqldb } = require("../models/db");
 
 const hashingOptions = {
   type: argon2.argon2id,

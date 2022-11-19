@@ -1,4 +1,4 @@
-const { sqldb } = require("../../db");
+const { sqldb } = require("../models/db");
 
 const getUsers = async (req, res) => {
   const users = await sqldb.query("SELECT * FROM users");
