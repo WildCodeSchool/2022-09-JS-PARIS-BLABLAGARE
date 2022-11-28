@@ -52,9 +52,16 @@ function Inscription() {
   function check() {
     const keys = Object.keys(inputs);
     const emptyInputs = {};
+    const dico = {
+      firstname: "Nom",
+      lastname: "Prenom",
+      alias: "Pseudo",
+      email: "Email",
+    };
+
     keys.forEach((key) => {
       if (inputs[key] === "") {
-        emptyInputs[key] = `Le champ ${key} est vide`;
+        emptyInputs[key] = `Le champ ${dico[key]} est vide`;
       } else {
         emptyInputs[key] = null;
       }
@@ -106,7 +113,7 @@ function Inscription() {
           champ="Nom :"
           onChange={(e) => handleChange(e)}
           value={inputs.firstname}
-          name="firstname"
+          name="firstName"
           placeholder="Nom"
         />
         <p className="message-input"> {inputMessage.firstname}</p>

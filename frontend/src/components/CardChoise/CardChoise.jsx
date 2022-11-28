@@ -212,6 +212,7 @@ function Proposition() {
               case "recherche":
                 return (
                   <Button
+                    classButton="btn-choise"
                     idButton="btn"
                     type="submit"
                     champButton="Valider"
@@ -221,6 +222,7 @@ function Proposition() {
               case "proposition":
                 return (
                   <Button
+                    classButton="btn-choise"
                     idButton="btn"
                     type="submit"
                     champButton="Valider"

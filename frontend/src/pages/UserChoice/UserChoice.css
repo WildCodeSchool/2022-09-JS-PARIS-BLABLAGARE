@@ -16,16 +16,18 @@
 .alias {
   display: block;
   color: white;
-  margin-bottom: 1vh;
+  margin-bottom: 6vh;
 }
 
 .propo-search {
   color: white;
+  margin-bottom: 2vh;
 }
 
 .gare-select {
   display: flex;
   align-items: center;
+  margin-bottom: 4vh;
 }
 .text {
   color: white;
@@ -54,11 +56,13 @@
   display: flex;
   margin-left: 21vw;
   margin-top: -3vh;
+  margin-bottom: 4vh;
 }
 
 .dateTime {
   display: flex;
   align-items: center;
+  margin-bottom: 2vh;
 }
 
 .label-date {
@@ -88,6 +92,8 @@
   cursor: pointer;
   color: white;
   font-size: 21px;
+  margin-top: 2vh;
+  margin-left: 50vw;
 }
 @media screen and (min-width: 768px) {
   #dep {
@@ -119,6 +125,7 @@
   }
 
   .input-choise {
+    
     width: 31vw;
     height: 4vh;
     margin-left: 18vw;
