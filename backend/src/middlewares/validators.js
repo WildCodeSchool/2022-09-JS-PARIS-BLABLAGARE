@@ -1,7 +1,9 @@
 const validateUser = (req, res, next) => {
   const { firstname, lastname, email, alias, password } = req.body;
   const errors = [];
-  const emailRegex = /^[a-z0-9._]+@[a-z0-9-]+\.[a-z]{2,3}$/;
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-z0-9-]+\.[a-z]{2,3}$/;
+  const passwordRegex =
+    /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[-.:;,+!?*$@%_])([-.:;,+!?*$@%_\w]{8,})$/;
 
   if ((firstname || lastname || email || alias || password) == null) {
     errors.push({ field: "allField", message: "must be completed" });
@@ -17,6 +19,9 @@ const validateUser = (req, res, next) => {
   }
   if (!emailRegex.test(email)) {
     errors.push({ field: "email", message: "invalid email" });
+  }
+  if (!passwordRegex.test(password)) {
+    errors.push({ field: "password", message: "invalid password" });
   }
   if (errors.length) {
     res.status(422).json({ validationErrors: errors });

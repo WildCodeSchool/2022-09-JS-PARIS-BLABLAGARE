@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./CardInscription.css";
 import Button from "../CardButton/CardButton";
 import Input from "../CardInput/CardInput";
 
@@ -27,6 +26,21 @@ function Inscription() {
 
   const [inputs, setInputs] = useState(initialValues);
 
+  const regexPassword = (value) => {
+    return /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[-.:;,+!?*$@%_])([-.:;,+!?*$@%_\w]{8,})$/.test(
+      value
+    );
+  };
+
+  const passwordControle = () => {
+    if (regexPassword(inputs.password)) {
+      setPasswordRegex(true);
+      return true;
+    }
+    setPasswordRegex(false);
+    return false;
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInputs({
@@ -49,20 +63,6 @@ function Inscription() {
       ...emptyInputs,
     });
   }
-  const regexPassword = (value) => {
-    return /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[-.:;,+!?*$@%_])([-.:;,+!?*$@%_\w]{8,})$/.test(
-      value
-    );
-  };
-
-  const passwordControle = () => {
-    if (regexPassword(inputs.password)) {
-      setPasswordRegex(true);
-      return true;
-    }
-    setPasswordRegex(false);
-    return false;
-  };
 
   function inputValid() {
     let canChangePage = true;
