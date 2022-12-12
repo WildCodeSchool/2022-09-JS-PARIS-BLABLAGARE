@@ -53,8 +53,8 @@ function Inscription() {
     const keys = Object.keys(inputs);
     const emptyInputs = {};
     const dico = {
-      firstname: "Nom",
-      lastname: "Prenom",
+      lastname: "Nom",
+      firstname: "Prenom",
       alias: "Pseudo",
       email: "Email",
     };
@@ -108,25 +108,25 @@ function Inscription() {
     <div className="inscription">
       <form className="input-inscription">
         <Input
-          forId="firstName"
+          forId="lastName"
           type="text"
           champ="Nom :"
           onChange={(e) => handleChange(e)}
-          value={inputs.firstname}
-          name="firstName"
+          value={inputs.lastname}
+          name="lastname"
           placeholder="Nom"
         />
-        <p className="message-input"> {inputMessage.firstname}</p>
+        <p className="message-input"> {inputMessage.lastname}</p>
         <Input
-          forId="lastName"
+          forId="firstName"
           type="text"
           champ="Prénom :"
           onChange={(e) => handleChange(e)}
-          value={inputs.lastname}
-          name="lastname"
+          value={inputs.firstname}
+          name="firstname"
           placeholder="Prénom"
         />
-        <p className="message-input"> {inputMessage.lastname}</p>
+        <p className="message-input"> {inputMessage.firstname}</p>
         <Input
           forId="name"
           type="text"

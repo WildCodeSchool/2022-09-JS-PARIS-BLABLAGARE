@@ -189,10 +189,6 @@ export default function CardUpdate() {
           autoComplete="on"
           placeholder="Mot de passe"
         />
-
-        <p className="message-input">
-          {password === "" ? " Veuillez entrer un mot de passe " : ""}
-        </p>
         <span
           onClick={() => setPasswordIsVisible(!passwordIsVisible)}
           onKeyDown={() => setPasswordIsVisible(!passwordIsVisible)}
@@ -205,6 +201,10 @@ export default function CardUpdate() {
             alt={passwordIsVisible ? "Open Eye" : "Close Eye"}
           />
         </span>
+        <p className="message-input">
+          {password === "" ? " Veuillez entrer un mot de passe " : ""}
+        </p>
+
         <Input
           forId="confMdp"
           type={passwordConfIsVisible ? "text" : "password"}

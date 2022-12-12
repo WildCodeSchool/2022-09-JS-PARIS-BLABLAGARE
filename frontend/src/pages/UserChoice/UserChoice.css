@@ -46,7 +46,7 @@
 #dep {
   height: 4vh;
   width: 33vw;
-  margin-left: 5px;
+  margin-left: 1vw;
 }
 .label-select {
   margin-right: 1vw;
@@ -149,6 +149,7 @@
   }
   .btn-choise {
     font-size: 2rem;
+    margin-left: 38vw;
   }
 }
 
@@ -202,6 +203,11 @@
   #message {
     width: 30vw;
   }
+  .btn-choise {
+    font-size: 2rem;  
+    margin-left: 22vw;
+
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -241,7 +247,8 @@
   }
   #dated {
     height: 4vh;
-    width: 12vw;
+    width: 12vw;  
+    margin-left: 4.5vw;
   }
   #time {
     width: 7vw;
@@ -252,5 +259,20 @@
   #message {
     height: 8vh;
     width: 32vw;
+  }
+  .btn-choise{
+    margin-left: 27vw;
+  }
+}
+
+@media (min-width: 1920px) {
+  #time {
+margin-left: 3.5vw;
+  }
+  #dep {
+    margin-left: 8.2vw;
+  }
+  .text {
+    margin-right: 20vw;
   }
 }

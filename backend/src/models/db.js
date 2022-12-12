@@ -9,18 +9,13 @@ const sqldb = mysql.createPool({
   database: DB_NAME,
 });
 
-sqldb
-  .getConnection()
-  .then(() => {
-    console.warn("Database connected");
-  })
-  .catch(() => {
-    console.warn(
-      "Warning:",
-      "Failed to get a DB connection.",
-      "Did you create a .env file with valid credentials?",
-      "Routes using models won't work as intended"
-    );
-  });
+sqldb.getConnection().catch(() => {
+  console.warn(
+    "Warning:",
+    "Failed to get a DB connection.",
+    "Did you create a .env file with valid credentials?",
+    "Routes using models won't work as intended"
+  );
+});
 
 module.exports = { sqldb };

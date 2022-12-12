@@ -26,3 +26,4 @@ CREATE TABLE killedTokens (
 );
 
 -- INSERT INTO item (title) VALUES ('Stuff'), ('Doodads');
+
