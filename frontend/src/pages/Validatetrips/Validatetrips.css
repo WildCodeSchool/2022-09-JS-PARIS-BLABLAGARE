@@ -57,6 +57,7 @@
   .container-valide {
     background-image: url(../../assets/covoit1.jpg);
     background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
     margin-right: 0px;
     margin-left: 0px;

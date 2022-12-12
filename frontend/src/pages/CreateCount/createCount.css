@@ -135,6 +135,7 @@
   .container-inscription {
     background-image: url("../../assets/covoit1.jpg");
     background-size: cover;
+    background-position: center;
   }
   .inscription {
     margin-top: 3vh;

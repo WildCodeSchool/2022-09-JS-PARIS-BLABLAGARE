@@ -86,6 +86,7 @@
   .fond {
     background-image: url(../../assets/covoit1.jpg);
     background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
   }
   .resultOffres {

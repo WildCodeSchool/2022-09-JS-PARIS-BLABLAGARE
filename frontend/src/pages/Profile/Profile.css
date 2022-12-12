@@ -172,6 +172,7 @@
   }
   .container-profile {
     background-image: url("../../assets/covoit1.jpg");
+    background-position: center;
     background-size: cover;
   }
   .update {

@@ -72,6 +72,7 @@
     background-image: url(../../assets/covoit1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     margin-right: 0px;
     margin-left: 0px;
     height: 70vh;

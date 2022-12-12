@@ -216,6 +216,7 @@
   }
   .container-trips {
     background-image: url(../../assets/covoit1.jpg);
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     margin-right: 0px;
