@@ -89,3 +89,9 @@
     font-size: 2rem;
   }
 }
+@media (min-width: 1920px) {
+  .user {
+    margin-right: 30vw;
+    width: 40vw;
+  }
+}
